@@ -2,6 +2,8 @@ import Experience from "../Experience"
 import Sizes from "../Utils/Sizes"
 import Camera from "../Camera"
 import Room from "./Room"
+import Environment from "./Environment"
+import Resources from "../Utils/Resource"
 
 import * as THREE from 'three';
 export default class World{
@@ -13,6 +15,8 @@ export default class World{
     camera: Camera;
     renderer: THREE.WebGLRenderer;
     room: Room;
+    environment: Environment;
+    resources: Resources;
 
     constructor(){
         this.experience = new Experience();
@@ -20,7 +24,13 @@ export default class World{
         this.scene = this.experience.scene
         this.canvas = this.experience.canvas
         this.camera= this.experience.camera;
-        this.room = new Room()
+        
+        this.resources = this.experience.resources;
+
+        this.resources.on('ready',()=>{
+            this.environment = new Environment();
+            this.room = new Room()
+        })
         
     
     }
