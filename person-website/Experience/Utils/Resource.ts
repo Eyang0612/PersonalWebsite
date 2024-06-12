@@ -3,6 +3,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
 import Experience from "../Experience"
 import Renderer from "../Renderer";
+import * as THREE from "three"
 export default class Resources extends EventEmitter{
     experience: Experience;
     renderer: Renderer;
@@ -11,6 +12,8 @@ export default class Resources extends EventEmitter{
     queue: number;
     loaded: number;
     loaders:Object;
+    video:Object;
+    videoTexture: Object;
 
     constructor(assets?:Array<any>){
         super()
@@ -39,6 +42,27 @@ export default class Resources extends EventEmitter{
                 this.loaders['gltfLoader'].load(asset.path, (file)=>{
                     this.singleAssetLoaded(asset,file)
                 })
+            }else if (asset.type === "videoTexture") {
+                this.video = {};
+                this.videoTexture = {};
+
+                this.video[asset.name] = document.createElement("video");
+                this.video[asset.name].src = asset.path;
+                this.video[asset.name].muted = true;
+                this.video[asset.name].playsInline = true;
+                this.video[asset.name].autoplay = true;
+                this.video[asset.name].loop = true;
+                this.video[asset.name].play();
+
+                this.videoTexture[asset.name] = new THREE.VideoTexture(
+                    this.video[asset.name]
+                );
+                this.videoTexture[asset.name].flipY = false;
+                this.videoTexture[asset.name].minFilter = THREE.NearestFilter;
+                this.videoTexture[asset.name].magFilter = THREE.NearestFilter;
+                this.videoTexture[asset.name].generateMipmaps = false;
+
+                this.singleAssetLoaded(asset, this.videoTexture[asset.name]);
             }
         }
     }

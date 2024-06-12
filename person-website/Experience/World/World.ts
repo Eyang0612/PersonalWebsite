@@ -3,6 +3,7 @@ import Sizes from "../Utils/Sizes"
 import Camera from "../Camera"
 import Room from "./Room"
 import Environment from "./Environment"
+import Controls from "./Controls"
 import Resources from "../Utils/Resource"
 
 import * as THREE from 'three';
@@ -17,6 +18,7 @@ export default class World{
     room: Room;
     environment: Environment;
     resources: Resources;
+    controls: Controls
 
     constructor(){
         this.experience = new Experience();
@@ -30,6 +32,7 @@ export default class World{
         this.resources.on('ready',()=>{
             this.environment = new Environment();
             this.room = new Room()
+            this.controls = new Controls();
         })
         
     
@@ -41,6 +44,12 @@ export default class World{
     }
 
     update() {
+        if(this.controls){
+            this.controls.update()
+        }
+        if(this.room){
+            this.room.update()
+        }
     
     }
 }

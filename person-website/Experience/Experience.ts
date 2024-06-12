@@ -49,12 +49,14 @@ world: World;
       update(){
         this.camera.update();
         this.renderer.update();
+        this.world.update();
 
       }
 
       resize(){
         this.camera.resize();
         this.renderer.resize();
+        this.world.update();
 
       }
 
