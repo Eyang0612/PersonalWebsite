@@ -3,8 +3,6 @@ import * as THREE from 'three';
 import Resources from "../Utils/Resource";
 import Time from "../Utils/Time";
 import Camera from "../Camera";
-import GSAP from "gsap"
-import { Scene } from "three";
 export default class Controls {
 
     experience: Experience;
@@ -33,11 +31,6 @@ export default class Controls {
         this.time = this.experience.time
 
        
-
-        
-
-    
-
 
 
     }

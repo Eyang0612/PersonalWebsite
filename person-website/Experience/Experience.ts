@@ -38,12 +38,14 @@ world: World;
         this.resources = new Resources(assets)
         this.world = new World();
 
+        this.sizes.on("resize",()=>{
+          console.log('resize')
+            this.resize();
+        })
         this.time.on("update",()=>{
             this.update();
         })
-        this.time.on("resize",()=>{
-            this.resize();
-        })
+        
       }
 
       update(){
@@ -56,7 +58,7 @@ world: World;
       resize(){
         this.camera.resize();
         this.renderer.resize();
-        this.world.update();
+       
 
       }
 
