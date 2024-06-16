@@ -45,22 +45,35 @@ export default class Room{
 
     setModel(){
         this.actualRoom.children.forEach(child => {
-            
             console.log(child)
             child.castShadow = true;
             child.receiveShadow = true;
             if(child instanceof THREE.Group || child instanceof THREE.Object3D){
+
                 child.children.forEach(groupChild => {
                     groupChild.castShadow = true;
                     groupChild.receiveShadow = true;
                     
                 })
+        
             }
             if (child.name === "Screen") {
                 child['material'] = new THREE.MeshBasicMaterial({
                     map: this.resources.items['screen'],
                 });
             }
+            // if(child.name === "Room"){
+            //     child.children.forEach(groupChild =>{
+                    
+            //         groupChild.rotation.y =Math.PI
+            //         groupChild.rotation.x = -Math.PI/2
+            //         groupChild.position.set(-2,0,0.5)
+            //         groupChild.scale.x =0.1
+            //         groupChild.scale.set(0.2,0.2,0.2)
+            //     })
+            // }else{
+            //     child.scale.set(0,0,0);
+            // }
         })
         this.scene.add(this.actualRoom)
     }

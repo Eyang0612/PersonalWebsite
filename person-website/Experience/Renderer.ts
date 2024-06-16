@@ -30,7 +30,7 @@ export default class Renderer{
         })
 
         this.renderer.toneMapping = THREE.LinearToneMapping;
-        this.renderer.toneMappingExposure = 1;
+        this.renderer.toneMappingExposure = 1.5;
         this.renderer.shadowMap.enabled = true;
         this.renderer.shadowMap.type = THREE.VSMShadowMap;
         this.renderer.setSize(this.sizes.width, this.sizes.height);

@@ -27,6 +27,25 @@ main{
 }
 
 
+/* Preloader section */
+
+#preloader{
+  position:aboslute;
+  display:flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+  top:0;
+  left:0;
+  margin:0;
+  width:100vw;
+  height:100vh;
+  background-color:#ffecab;
+  display:none;
+}
+
+/* Hero Section */
+
 #hero{
   margin:0;
   width:100vw;
@@ -38,22 +57,24 @@ main{
   width:100vw;
   height:50%;
 }
+
 #button-left,#button-right{
   z-index:10000;
+
+  
+}
+
+#button-horizontal{
   position:absolute;
+  top:0;
+  left:0;
+  width:100vw;
+  height:100vh;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: display ease-in 0.3;
   
-  
-
-}
-
-#button-left{
-
-  top:50%;
-  left:5%;
-}
-#button-right{
-  top:50%;
-  right:5%;
 }
 #button-vertical{
   position:absolute;
@@ -67,6 +88,58 @@ main{
   align-items: center;
   
 }
-#button-top,#button-bottom{
+#button-top,#button-bottom,#button-left,#button-right{
   margin:2%;
 }
+
+#left-side-bar{
+  transform: translateX(-100%);
+  width: 50%;
+    background-color: #333;
+  z-index:1000;
+    padding: 20px;
+    transition: transform 0.3s;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height:100%;
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none;
+    overflow-y: auto;
+    display:flex;
+    padding-top:0;
+    padding-bottom:0;
+}
+#left-side-bar::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
+
+#right-side-bar{
+  transform: translateX(100%);
+  width: 250px;
+
+   
+    padding: 20px;
+    transition: transform 0.3s;
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+   
+
+}
+#left-button-box{
+  display:flex;
+  position:sticky;
+  top:0;
+  right:0;
+  margin:0;
+  padding:0;
+  flex:auto;
+  justify-content: center;
+  align-items:center;
+  height:100vh;
+
+}
+
+
