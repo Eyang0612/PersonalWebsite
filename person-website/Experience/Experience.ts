@@ -5,8 +5,10 @@ import Resources from "./Utils/Resource.ts"
 import assets from "./Utils/Assets.ts"
 import Camera from "./Camera.js"
 import Renderer from "./Renderer.ts"
+import Preloader from "./Preloader.ts"
 
 import World from "./World/World.ts"
+
 
 
 export default class Experience{
@@ -19,6 +21,7 @@ time: Time;
 renderer: Renderer;
 resources: Resources;
 world: World;
+preloader: Preloader
 
 
 
@@ -37,9 +40,14 @@ world: World;
         this.renderer = new Renderer()
         this.resources = new Resources(assets)
         this.world = new World();
+      
+
+        this.world.on("worldready",()=>{
+          this.preloader = new Preloader()
+        })
 
         this.sizes.on("resize",()=>{
-          console.log('resize')
+ 
             this.resize();
         })
         this.time.on("update",()=>{

@@ -14,6 +14,7 @@ export default class Room{
    rotationY:number;
    lerpZ: {target:number, current:number,ease:number};
    rotationZ:number;
+   roomChildren: Object;
 
 
     constructor(){
@@ -23,6 +24,8 @@ export default class Room{
         this.resources = this.experience.resources
         this.room = this.resources.items['room']
         this.actualRoom = this.room.scene
+
+        this.roomChildren = {};
 
         this.lerpY = {
             current: 0,
@@ -37,7 +40,7 @@ export default class Room{
         }
 
         this.setModel()
-        this.onMouseMove()
+        // this.onMouseMove()
 
         
     
@@ -45,7 +48,7 @@ export default class Room{
 
     setModel(){
         this.actualRoom.children.forEach(child => {
-            console.log(child)
+           
             child.castShadow = true;
             child.receiveShadow = true;
             if(child instanceof THREE.Group || child instanceof THREE.Object3D){
@@ -62,19 +65,25 @@ export default class Room{
                     map: this.resources.items['screen'],
                 });
             }
-            // if(child.name === "Room"){
-            //     child.children.forEach(groupChild =>{
-                    
-            //         groupChild.rotation.y =Math.PI
-            //         groupChild.rotation.x = -Math.PI/2
-            //         groupChild.position.set(-2,0,0.5)
-            //         groupChild.scale.x =0.1
-            //         groupChild.scale.set(0.2,0.2,0.2)
-            //     })
-            // }else{
-            //     child.scale.set(0,0,0);
-            // }
+            if(child.name === "Room"){
+       
+               child.rotation.y = child.rotation.y + Math.PI
+               child.rotation.x = child.rotation.x- Math.PI/2
+               
+                child.position.x = child.position.x -2
+                child.position.z = child.position.z -1
+
+               
+                child.scale.set(0,0,0)
+                
+            }else{
+                child.position.y = child.position.y + 10;
+            }
+            this.roomChildren[child.name.toLowerCase()] = child;
+            
         })
+        this.roomChildren = this.sortObject(this.roomChildren)
+        console.log(this.roomChildren)
         this.scene.add(this.actualRoom)
     }
     onMouseMove(){
@@ -84,6 +93,15 @@ export default class Room{
             this.rotationZ = (2* (e.clientY - window.innerHeight/2)/window.innerHeight)
             this.lerpZ.target = this.rotationZ*0.1
         })
+    }
+    sortObject(objects:Object){
+        return Object.keys(objects).sort().reduce(
+            (obj, key) => { 
+              obj[key] = objects[key]; 
+              return obj;
+            }, 
+            {}
+          );
     }
   
     resize() {
