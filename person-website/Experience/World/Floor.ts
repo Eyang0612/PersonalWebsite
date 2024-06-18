@@ -45,7 +45,7 @@ export default class Floor {
         this.circleFirst.position.y = -0.29;
 
         this.circleSecond.position.y = -0.28;
-        this.circleSecond.position.x = 2;
+       
 
         this.circleThird.position.y = -0.27;
 

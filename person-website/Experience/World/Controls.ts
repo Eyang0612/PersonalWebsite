@@ -26,6 +26,7 @@ export default class Controls {
     lerp: {target:number, current:number,ease:number};
     back:boolean;
     circleFirst:THREE.Mesh
+    circleSecond:THREE.Mesh
 
 
 
@@ -39,6 +40,8 @@ export default class Controls {
         this.time = this.experience.time
 
         this.circleFirst = this.experience.world.floor.circleFirst;
+        this.circleSecond = this.experience.world.floor.circleSecond;
+        this.experience.world.room.onMouseMove()
 
        const leftSideButton = document.getElementById("button-left")
        leftSideButton.addEventListener("click",() =>{
@@ -51,8 +54,13 @@ export default class Controls {
 
        const rightSideButton = document.getElementById("button-right")
         rightSideButton.addEventListener("click",() =>{
-        document.getElementById('right-side-bar').style.transform = "translateX(0)";
+            this.rightSideBarOpenAnimation()
         
+       })
+
+       const rightSideButtonClose = document.getElementById("button-right-close")
+       rightSideButtonClose.addEventListener("click",() =>{
+        this.rightSideBarCloseAnimation()
        })
         
 
@@ -91,7 +99,7 @@ export default class Controls {
         });
         leftSideTimeline.to("#button-horizontal", { opacity: 0, duration: 0.2 });
         leftSideTimeline.to('#left-side-bar', {
-            xPercent:100, left:"0%",
+            translateX: "0%",
             duration: 0.5, ease:"circ"
           })
     }
@@ -109,8 +117,8 @@ export default class Controls {
                 duration:0.5
             })
         leftSideTimeline.to('#left-side-bar', {
-            xPercent:-100, left:"-100%",
-            duration: 1,
+            translateX: "-100%",
+            duration: 0.5,
     })
    
     leftSideTimeline.to(
@@ -118,13 +126,78 @@ export default class Controls {
             x: 0,
             y: 0,
             z: 0,
-            duration:1
+            duration:0.5
         }
     )
         leftSideTimeline.fromTo(["#hero","#button-horizontal"],{opacity:0},{opacity:1,duration:0.2})
 }
 
+rightSideBarOpenAnimation(){
+    const rightSideTimeline = GSAP.timeline()
+    // GSAP.fromTo(
+    //     this.room.position,
+    //     {x:0,y:0,z:0},
+    //     {
+    //         // x: () => {
+    //         //     return this.sizes.width * 0.003;
+    //         // },
+    //         // z: this.sizes.height * 0.005
+            
+    //         ,duration:1
+    //     },
+    // );
+    GSAP.to(
+        this.room.scale,
+        {
+            x: 3,
+            y: 3,
+            z: 3,
+            duration:1
+        },
 
+    )
+    GSAP.fromTo("#hero",{opacity:1},{opacity:0,duration:0.2})
+    rightSideTimeline.to(this.circleSecond.scale, {
+        x: 3,
+        y: 3,
+        z: 3,
+        duration:1
+    });
+    rightSideTimeline.to("#button-horizontal", { opacity: 0, duration: 0.2 });
+    rightSideTimeline.to('#right-side-bar', {
+        translateX: "0%",
+        duration: 0.5, ease:"circ"
+      })
+}
+
+rightSideBarCloseAnimation(){
+    const rightSideTimeline = GSAP.timeline()
+    // GSAP.to(
+    // this.room.position,
+    // {x:0,y:0,z:0,duration:0.5});
+    GSAP.to(
+        this.room.scale,
+        {
+            x: 1,
+            y: 1,
+            z: 1,
+            duration:0.5
+        })
+        rightSideTimeline.to('#right-side-bar', {
+        translateX: "100%",
+        duration: 0.5,
+})
+
+rightSideTimeline.to(
+    this.circleSecond.scale, {
+        x: 0,
+        y: 0,
+        z: 0,
+        duration:0.5
+    }
+)
+rightSideTimeline.fromTo(["#hero","#button-horizontal"],{opacity:0},{opacity:1,duration:0.2})
+}
 
 
     update() {

@@ -1,85 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <link rel="stylesheet" href="./src/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Eddie Yang</title>
-  </head>
-  <body>
-    <div id="experience">
-      <canvas id="experience-canvas"></canvas>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <link rel="stylesheet" href="./src/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eddie Yang</title>
+</head>
+
+<body>
+  <div id="experience">
+    <canvas id="experience-canvas"></canvas>
+  </div>
+
+  <main>
+    <div id="loader">
+      <div class="spinner-border" role="status">
+      </div>
+      <strong class="text-center" role="status">Loading...</strong>
     </div>
 
-    <main>
-      <div id="loader">
-          <div class="spinner-border" role="status">
-          </div>
-          <strong class="text-center" role="status">Loading...</strong>
-      </div>
+    <div id="preloader">
+      <h1>Welcome to my wesbite!</h1>
+      <button id="preloader-button" type="button" class="btn btn-outline-dark">Get Started<br>&#8964;</button>
+    </div>
 
-<div id="preloader">
-  <h1>Welcome to my wesbite!</h1>
-  <button id="preloader-button" type="button" class="btn btn-outline-dark">Get Started<br>&#8964;</button>
-</div>
-
-      <div id="hero" class="container text-center ">
-        <div id="hero-row" class="row align-items-center">
-          <div class="col">
-          </div>
-          <div class="col">
-            <h1 class="text-uppercase fw-bold bs-dark-text-emphasis" >Personal Website</h1>
-          </div>
+    <div id="hero" class="container text-center ">
+      <div id="hero-row" class="row align-items-center">
+        <div class="col">
         </div>
-        <div id="hero-row" class="row align-items-start">
-          <div class="col">
-            <br>
-            <br>
-            <br>
-            <h1 class="text-uppercase fw-bold bs-dark-text-emphasis">Eddie Yang</h1>
-            <h3 class="fw-lighter">Computer Science Student</h3>
-          </div>
-          <div class="col">
-            
-          </div>
-          
+        <div class="col">
+          <h1 class="text-uppercase fw-bold bs-dark-text-emphasis">Personal Website</h1>
         </div>
       </div>
-      <div id="button-box">
-        <div id="button-horizontal">
+      <div id="hero-row" class="row align-items-start">
+        <div class="col">
+          <br>
+          <br>
+          <br>
+          <h1 class="text-uppercase fw-bold bs-dark-text-emphasis">Eddie Yang</h1>
+          <h3 class="fw-lighter">Computer Science Student</h3>
+        </div>
+        <div class="col">
+
+        </div>
+
+      </div>
+    </div>
+    <div id="button-box">
+      <div id="button-horizontal">
         <button id="button-left" type="button" class="btn btn-outline-dark">&Lt; About</button>
         <button id="button-right" type="button" class="btn btn-outline-dark">Projects &Gt; </button>
-</div>
-     
+      </div>
+
       <div id="button-vertical" style="display:none">
-      <button id="button-top" type="button" class="btn btn-outline-dark">&#8963;</button>
+        <button id="button-top" type="button" class="btn btn-outline-dark">&#8963;</button>
         <button id="button-bottom" type="button" class="btn btn-outline-dark">Contact Me!<br>&#8964;</button>
       </div>
-      </div>
+    </div>
 
-      <div id="left-side-bar">
-        <div class="card card-body" style="width:40vw; height:1000px">
-          This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
+    <div id="left-side-bar">
+      <div>
+        <div class="card" style="width:40vw; height:auto">
+          <h1 class="card-header">About Me</h1>
+          <h3>Hello! My name is Eddie Yang!</h3>
+          <h6>
+            I am a third-year Computer Science student at the University of Toronto Scarborough, driven by a deep
+            passion for technology and innovation. My academic journey has been marked by a blend of theoretical
+            learning and practical application, providing me with a solid foundation in various areas of computer
+            science, including algorithms, data structures, and software development.
+          </h6>
+          <h6>
+            In addition to my studies, I have gained valuable experience as a teaching assistant. This role has not only
+            honed my understanding of core computer science concepts but also enhanced my ability to communicate complex
+            ideas effectively. I take pride in helping my peers succeed and enjoy the collaborative learning environment
+            that the teaching assistant role fosters.
+          </h6>
+          <h6>
+            My interest in technology extends beyond the classroom. I am constantly exploring new advancements in the
+            tech world, from emerging programming languages to cutting-edge software development tools. I am
+            particularly fascinated by the potential of artificial intelligence and machine learning, and I actively
+            seek opportunities to expand my knowledge and skills in these areas.
+          </h6>
+          <h6>
+            Overall, my goal is to leverage my education and experiences to contribute meaningfully to the tech
+            industry, driving innovation and creating impactful solutions to real-world problems.
+          </h6>
         </div>
-        <div id="left-button-box">
-        <button id="button-left-close" type="button" class="btn btn-outline-light"><p>Back &Gt;</p></button>
-      </div>  
+        <div class="card" style="width:40vw; height:auto">
+          <h1 class="card-header">Hobbies</h1>
+          <h3>Eat, Sleep, Repeat</h3>
+          <h6>
+            Is only a part of my routine, as I like to keep it consistent. When I'm not immersed in my studies or
+            assisting my peers, I love to unwind and recharge through a variety of hobbies.
+          </h6>
+
+          <h3>Anime</h3>
+          <h6>
+            I'm an avid anime fan, with some of my favorite series being "Jujutsu Kaisen" and "One Piece." The intricate
+            storylines, compelling characters, and stunning animation captivate me and offer a fantastic escape from the
+            daily grind.
+          </h6>
+
+          <h3>Traveling</h3>
+          <h6>
+            Traveling is another major interest of mine. I have a long bucket list of places I want to visit, including
+            Japan, France, and various parts of Europe. I'm excited about the prospect of experiencing different
+            cultures, tasting diverse cuisines, and exploring historical landmarks.
+          </h6>
+
+          <h3>Nature</h3>
+          <h6>
+            I find solace in nature and enjoy activities like hiking, exploring trails, and visiting lakes. Being
+            outdoors and surrounded by natural beauty is incredibly rejuvenating and helps me maintain a balanced
+            lifestyle.
+          </h6>
+
+          <h6>
+            Through these hobbies, I strive to maintain a well-rounded life, blending physical activity, entertainment,
+            exploration, and tranquility.
+          </h6>
+        </div>
+        <div class="card">
+          <h1 class="card-header">Interests</h1>
+          <h3>Driven By Excitement</h3>
+          <h6>
+            My interests are deeply rooted in the world of technology and its future potential. I am particularly
+            interested in web development, where I enjoy creating dynamic and responsive websites that provide engaging
+            user experiences.
+          </h6>
+          <h6>
+            Another area that fascinates me is Blender and 3D modeling. I love the creativity and precision involved in
+            bringing digital objects to life and exploring the endless possibilities of 3D design.
+          </h6>
+          <h6>
+            Artificial intelligence and machine learning are fields that I find incredibly exciting. The potential for
+            AI to transform industries and solve complex problems is vast, and I am eager to be a part of this
+            revolution. Within AI, neural networks are of special interest to me due to their ability to mimic the human
+            brain's functioning and learn from vast amounts of data.
+          </h6>
+          <h6>
+            Overall, my interests are driven by a curiosity about the future and a desire to be at the forefront of
+            technological advancements. I am committed to continuous learning and innovation, always seeking new ways to
+            apply my knowledge and skills to make a positive impact.
+          </h6>
+        </div>
+      </div>
+      <div id="left-button-box">
+        <button id="button-left-close" type="button" class="btn btn-outline-dark">Back &Gt;</button>
+      </div>
+    </div>
+
+
+
+    <div id="right-side-bar">
+      <div id="right-button-box">
+        <button id="button-right-close" type="button" class="btn btn-outline-dark">&Lt;Back</button>
+      </div>
+      <div>
+        <div class="card" style="width:40vw; height:auto">
+          <h1 class="card-header">Experience</h1>
+
+          <h3>Software Developer Intern at Foturn</h3>
+          <h6></h6>
+
+          <h3>Teaching Assistant at University of Toronto Scarborough</h3>
+          <h6></h6>
+          <h3>Web Director for Management Technology Association</h3>
+          <h6></h6>
+          <h3>Course Representative at Association of Mathematical and Computer Science Students</h3>
+          <h6></h6>
+        </div>
+        <div class="card" style="width:40vw; height:auto">
+          <h1 class="card-header">Projects</h1>
+     
+
+          <h3>Personal Website</h3>
+          <h6><a href="https://github.com/Eyang0612/PersonalWebsite">Link</a></h6>
+          <h3>Assembly Mini Game</h3>
+          <h6><a href="https://github.com/Eyang0612/CSCB58_GAME">Link</a></h6>
+          <h3>GeoSnap</h3>
+          <h6><a href="https://github.com/Eyang0612/GeoSnap">Link</a></h6>
+          <h3>Andriod Web project</h3>
+          <h6><a href="https://github.com/Eyang0612/EduPortal-CSCB07">Link</a></h6>
+        </div>
       </div>
 
-        <div  id="right-side-bar">
-          <div class="card card-body" style="width:40vw; height:100vh; display:none;">
-            This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
-          </div>
-    
-          </div>
+    </div>
 
-      </main>
+  </main>
 
 
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script type="module" src="/src/main.ts"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script type="module" src="/src/main.ts"></script>
 
-  </body>
+</body>
+
 </html>

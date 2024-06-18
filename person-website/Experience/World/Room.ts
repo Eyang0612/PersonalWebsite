@@ -60,7 +60,7 @@ export default class Room{
                 })
         
             }
-            if (child.name === "Screen") {
+            if (child.name === "282Screen") {
                 child['material'] = new THREE.MeshBasicMaterial({
                     map: this.resources.items['screen'],
                 });
@@ -77,7 +77,7 @@ export default class Room{
                 child.scale.set(0,0,0)
                 
             }else{
-                child.position.y = child.position.y + 10;
+                child.position.y = child.position.y - 2;
             }
             this.roomChildren[child.name.toLowerCase()] = child;
             
@@ -90,10 +90,11 @@ export default class Room{
         window.addEventListener("mousemove",(e)=>{
             this.rotationY = (2* (e.clientX - window.innerWidth/2)/window.innerWidth)
             this.lerpY.target = this.rotationY*0.1
-            this.rotationZ = (2* (e.clientY - window.innerHeight/2)/window.innerHeight)
-            this.lerpZ.target = this.rotationZ*0.1
+            // this.rotationZ = (2* (e.clientY - window.innerHeight/2)/window.innerHeight)
+            // this.lerpZ.target = this.rotationZ*0.1
         })
     }
+
     sortObject(objects:Object){
         return Object.keys(objects).sort().reduce(
             (obj, key) => { 
@@ -111,7 +112,7 @@ export default class Room{
         
         this.lerpY.current = GSAP.utils.interpolate(this.lerpY.current,this.lerpY.target,this.lerpY.ease)
         this.actualRoom.rotation.y = this.lerpY.current;
-        this.lerpZ.current = GSAP.utils.interpolate(this.lerpZ.current,this.lerpZ.target,this.lerpZ.ease)
-        this.actualRoom.rotation.x = this.lerpZ.current;
+        // this.lerpZ.current = GSAP.utils.interpolate(this.lerpZ.current,this.lerpZ.target,this.lerpZ.ease)
+        // this.actualRoom.rotation.x = this.lerpZ.current;
     }
 }

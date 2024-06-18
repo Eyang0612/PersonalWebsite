@@ -76,7 +76,7 @@ main{
   height:50%;
 }
 
-#button-left,#button-right{
+#button-left,#button-right,#button-left-close{
   z-index:10000;
 
   
@@ -111,10 +111,12 @@ main{
   margin:2%;
 }
 
+/* Side Bar Section */
+
 #left-side-bar{
   transform: translateX(-100%);
-  width: 50%;
-    background-color: #333;
+  width: 50vw;
+    background-color: #ffecab;
   z-index:1000;
     padding: 20px;
     transition: transform 0.3s;
@@ -133,20 +135,7 @@ main{
   display: none;  /* Safari and Chrome */
 }
 
-#right-side-bar{
-  transform: translateX(100%);
-  width: 250px;
 
-   
-    padding: 20px;
-    transition: transform 0.3s;
-    position: fixed;
-    right: 0;
-    top: 0;
-    height: 100%;
-   
-
-}
 #left-button-box{
   display:flex;
   position:sticky;
@@ -162,3 +151,55 @@ main{
 }
 
 
+
+#right-side-bar{
+  transform: translateX(100%);
+  width: 50vw;
+    background-color: #ffecab;
+  z-index:1000;
+    padding: 20px;
+    transition: transform 0.3s;
+    position: fixed;
+    right: 0;
+    top: 0;
+    height:100%;
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none;
+    overflow-y: auto;
+    display:flex;
+    padding-top:0;
+    padding-bottom:0;
+}
+
+#right-side-bar::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
+
+#right-button-box{
+  display:flex;
+  position:sticky;
+  top:0;
+  right:0;
+  margin:0;
+  padding:0;
+  flex:auto;
+  justify-content: center;
+  align-items:center;
+  height:100vh;
+
+}
+
+
+.card{
+  width:40vw; 
+  height: auto;
+  
+  box-shadow: 0 4px 21px -12px rgba(0, 0, 0, 0.66);
+  border-radius: 20px;
+  margin: 2rem 0 2rem ;
+  padding:10px;
+  overflow: hidden;
+  position: relative;
+
+  background-color: #e1e5ea;
+}

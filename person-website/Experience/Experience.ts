@@ -8,6 +8,8 @@ import Renderer from "./Renderer.ts"
 import Preloader from "./Preloader.ts"
 
 import World from "./World/World.ts"
+import Controls from './World/Controls.ts';
+import Room from './World/Room.ts';
 
 
 
@@ -22,6 +24,8 @@ renderer: Renderer;
 resources: Resources;
 world: World;
 preloader: Preloader
+controls:Controls;
+room:Room
 
 
 
@@ -40,11 +44,13 @@ preloader: Preloader
         this.renderer = new Renderer()
         this.resources = new Resources(assets)
         this.world = new World();
+       
+          this.room = this.world.room
+        
       
-
-        this.world.on("worldready",()=>{
           this.preloader = new Preloader()
-        })
+      
+        
 
         this.sizes.on("resize",()=>{
  
@@ -53,6 +59,12 @@ preloader: Preloader
         this.time.on("update",()=>{
             this.update();
         })
+
+        this.preloader.on("enablecontrols", () => {
+          // this.room.onMouseMove();
+          this.controls = new Controls();
+         
+      });
         
       }
 
