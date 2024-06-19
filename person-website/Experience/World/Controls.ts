@@ -27,6 +27,9 @@ export default class Controls {
     back:boolean;
     circleFirst:THREE.Mesh
     circleSecond:THREE.Mesh
+    circleThird:THREE.Mesh
+    icons:NodeListOf<Element>
+    iconBox:HTMLElement
 
 
 
@@ -41,7 +44,14 @@ export default class Controls {
 
         this.circleFirst = this.experience.world.floor.circleFirst;
         this.circleSecond = this.experience.world.floor.circleSecond;
+        this.circleThird = this.experience.world.floor.circleThird;
+
         this.experience.world.room.onMouseMove()
+
+        this.icons = document.querySelectorAll('#icon-box a');
+
+        this.iconBox = document.getElementById('icon-box');
+        console.log(this.icons)
 
        const leftSideButton = document.getElementById("button-left")
        leftSideButton.addEventListener("click",() =>{
@@ -63,6 +73,7 @@ export default class Controls {
         this.rightSideBarCloseAnimation()
        })
         
+       this.bottomBarHandle()
 
     }
 
@@ -72,14 +83,17 @@ export default class Controls {
             this.room.position,
             {x:0,y:0,z:0},
             {
-                // x: () => {
-                //     return this.sizes.width * 0.003;
-                // },
                 z: this.sizes.height * 0.005
                 
                 ,duration:1
             },
         );
+        GSAP.to(
+            "#icon-box",{
+                translateY:"10vh",
+                duration:0.5
+            }
+        )
         GSAP.to(
             this.room.scale,
             {
@@ -100,7 +114,7 @@ export default class Controls {
         leftSideTimeline.to("#button-horizontal", { opacity: 0, duration: 0.2 });
         leftSideTimeline.to('#left-side-bar', {
             translateX: "0%",
-            duration: 0.5, ease:"circ"
+            duration: 0.5, ease:"power1.out"
           })
     }
     leftSideBarCloseAnimation(){
@@ -130,22 +144,16 @@ export default class Controls {
         }
     )
         leftSideTimeline.fromTo(["#hero","#button-horizontal"],{opacity:0},{opacity:1,duration:0.2})
+        leftSideTimeline.to(
+            "#icon-box",{
+                translateY:"0",
+                duration:0.2
+            }
+        )
 }
 
 rightSideBarOpenAnimation(){
     const rightSideTimeline = GSAP.timeline()
-    // GSAP.fromTo(
-    //     this.room.position,
-    //     {x:0,y:0,z:0},
-    //     {
-    //         // x: () => {
-    //         //     return this.sizes.width * 0.003;
-    //         // },
-    //         // z: this.sizes.height * 0.005
-            
-    //         ,duration:1
-    //     },
-    // );
     GSAP.to(
         this.room.scale,
         {
@@ -154,7 +162,12 @@ rightSideBarOpenAnimation(){
             z: 3,
             duration:1
         },
-
+    )
+    GSAP.to(
+        "#icon-box",{
+            translateY:"10vh",
+            duration:0.5
+        }
     )
     GSAP.fromTo("#hero",{opacity:1},{opacity:0,duration:0.2})
     rightSideTimeline.to(this.circleSecond.scale, {
@@ -172,20 +185,17 @@ rightSideBarOpenAnimation(){
 
 rightSideBarCloseAnimation(){
     const rightSideTimeline = GSAP.timeline()
-    // GSAP.to(
-    // this.room.position,
-    // {x:0,y:0,z:0,duration:0.5});
     GSAP.to(
         this.room.scale,
         {
             x: 1,
             y: 1,
             z: 1,
-            duration:0.5
+            duration:1
         })
         rightSideTimeline.to('#right-side-bar', {
         translateX: "100%",
-        duration: 0.5,
+        duration: 1,
 })
 
 rightSideTimeline.to(
@@ -197,6 +207,51 @@ rightSideTimeline.to(
     }
 )
 rightSideTimeline.fromTo(["#hero","#button-horizontal"],{opacity:0},{opacity:1,duration:0.2})
+rightSideTimeline.to(
+    "#icon-box",{
+        translateY:"0",
+        duration:0.5
+    }
+)
+}
+
+bottomBarHandle(){
+    
+            
+    this.iconBox.addEventListener('mouseover', ()=>{
+        GSAP.to(this.circleThird.scale, {
+        x: 3,
+        y: 3,
+        z: 3,
+        duration:0.5
+    });
+        
+    });
+    this.iconBox.addEventListener('mouseleave', ()=>{
+        GSAP.to(this.circleThird.scale, {
+            x: 0,
+            y: 0,
+            z: 0,
+            duration:0.5
+        });
+    });
+
+    this.icons.forEach(icon =>{
+        icon.addEventListener('mouseover', ()=>{
+                GSAP.to(`#${icon.id}`,{
+                    fontSize:"60px",
+                    delay:0.1,
+                    ease:"back.out"
+                })
+    })
+    icon.addEventListener('mouseleave', ()=>{
+        GSAP.to(`#${icon.id}`,{
+            fontSize:"24px",
+            delay:0.1
+        })
+})
+})
+    
 }
 
 
