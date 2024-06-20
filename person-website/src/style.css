@@ -2,9 +2,11 @@
   margin: 0;
   padding: 0;
   box-sizing:border-box;
-  font-family:"Poppins, sans-serif";
+  font-family:"Poppins", sans-serif;
 
 }
+
+
 
 #experience{
   position:fixed;
@@ -49,7 +51,7 @@ main{
   display:flex;
   opacity: 0;
   flex-direction: column;
-  justify-content:center;
+  justify-content:space-evenly;
   align-items: center;
   top:0;
   left:0;
@@ -65,7 +67,8 @@ main{
 
 #hero{
   opacity:0;
-
+  padding-top:10vh;
+  padding-bottom:10vh;
   margin:0;
   width:100vw;
   height:100vh;
@@ -77,11 +80,6 @@ main{
   height:50%;
 }
 
-#button-left,#button-right,#button-left-close{
-  z-index:10000;
-
-  
-}
 
 #button-horizontal{
   position:absolute;
@@ -90,36 +88,26 @@ main{
   width:100vw;
   height:100vh;
   opacity:0;
-  display:flex;
-  justify-content: space-between;
-  align-items: center;
   transition: display ease-in 0.3;
   
 }
-#button-vertical{
-  position:absolute;
-  top:0;
-  left:0;
-  width:100vw;
-  height:100vh;
-  display:flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  
-}
-#button-top,#button-bottom,#button-left,#button-right{
+
+#button-left,#button-right{
+  z-index:10000;
   margin:2%;
 }
 
 /* Side Bar Section */
 
 #left-side-bar{
+  border-radius:0 2vw 2vw 0;
   transform: translateX(-100%);
   width: 50vw;
     background-color: #ffecab;
   z-index:1000;
-    padding: 20px;
+  margin:0;
+  padding-left:2vh;
+  border-right:1px solid;
     transition: transform 0.3s;
     position: fixed;
     left: 0;
@@ -135,6 +123,10 @@ main{
   display: none;  /* Safari and Chrome */
 }
 
+#left-cardbox{
+  flex:auto;
+ 
+}
 
 #left-button-box{
   display:flex;
@@ -145,19 +137,24 @@ main{
   padding:0;
   flex:auto;
   justify-content: center;
-  align-items:center;
+  align-items:start;
   height:100vh;
+  padding:2vw;
+  
 
 }
 
 
 
 #right-side-bar{
+  border-radius:2vw 0 0 2vw;
   transform: translateX(100%);
   width: 50vw;
     background-color: #ffecab;
   z-index:1000;
-    padding: 20px;
+  margin:0;
+  padding-right:2vh;
+  border-left:1px solid;
     transition: transform 0.3s;
     position: fixed;
     right: 0;
@@ -174,34 +171,28 @@ main{
   display: none;  /* Safari and Chrome */
 }
 
+
+#right-cardbox{
+  flex:auto;
+}
+
+
+
 #right-button-box{
   display:flex;
   position:sticky;
   top:0;
-  right:0;
+  left:0;
   margin:0;
   padding:0;
   flex:auto;
   justify-content: center;
-  align-items:center;
+  align-items:start;
   height:100vh;
+  padding:2vw;
 
 }
 
-
-.card{
-  width:40vw; 
-  height: auto;
-  
-  box-shadow: 0 4px 21px -12px rgba(0, 0, 0, 0.66);
-  border-radius: 20px;
-  margin: 2rem 0 2rem ;
-  padding:10px;
-  overflow: hidden;
-  position: relative;
-
-  background-color: #e1e5ea;
-}
 
 /*Bottom Bar Section*/
 
@@ -257,4 +248,99 @@ i{
 }
 
 
+/* custom info card style */
 
+.card {
+  flex-wrap: wrap;
+  display: flex;
+  background-size: cover;
+            background-size: 100% 100%;
+  
+  box-shadow: none;
+  border-radius: none;
+  border-width:0;
+  margin: 2vh 0 2vh 0;
+  flex:auto;
+  overflow: hidden;
+  color:#000;
+  background-color: #ffecab;
+  
+ 
+
+	&.dark {
+		background-color: #18151f;
+	}
+	
+  
+}
+
+.card-header{
+  text-align: center;
+}
+
+/* mobile design */
+
+@media (max-width: 767px) { 
+  #left-side-bar,#right-side-bar{
+    width:100vw;
+  }
+
+ }
+
+ /* resume */
+
+ .resume .resume-title {
+  color: black;
+  font-size: 26px;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.resume .resume-item {
+  padding: 0 0 20px 20px;
+  margin-top: -2px;
+  border-left: 2px solid black;
+  position: relative;
+}
+
+.resume .resume-item h4 {
+  line-height: 18px;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: color-mix(in srgb, black, transparent 20%);
+  margin-bottom: 10px;
+}
+
+.resume .resume-item h5 {
+  font-size: 16px;
+  padding: 5px 15px;
+  display: inline-block;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.resume .resume-item ul {
+  padding-left: 20px;
+}
+
+.resume .resume-item ul li {
+  padding-bottom: 10px;
+}
+
+.resume .resume-item:last-child {
+  padding-bottom: 0;
+}
+
+.resume .resume-item::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50px;
+  left: -9px;
+  top: 0;
+  background:  #ffecab;
+  border: 2px solid black;
+}

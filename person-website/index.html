@@ -25,25 +25,24 @@
     </div>
 
     <div id="preloader">
-      <h1>Welcome to my wesbite!</h1>
-      <button id="preloader-button" type="button" class="btn btn-outline-dark">Get Started<br>&#8964;</button>
+      <h1 class="bs-dark-text-emphasis" >Welcome To My Portfolio!</h1>
+      <button id="preloader-button" type="button" class="btn btn-outline-dark">Get Started <i class="fa-solid fa-chevron-down fa-bounce" style="--fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1;"></i></button>
     </div>
 
     <div id="hero" class="container text-center ">
-      <div id="hero-row" class="row align-items-center">
+      <div id="hero-row" class="row">
         <div class="col">
         </div>
-        <div class="col">
-          <h1 class="text-uppercase fw-bold bs-dark-text-emphasis">Personal Website</h1>
+        <div id="hero-paragraph-upper" class="col d-flex  flex-column justify-content-md-center justify-content-start align-items-center">
+
+          <p class="fs-1 text-uppercase fw-bold bs-dark-text-emphasis">Personal Website</p>
+          <p class="fs-3 fw-lighter">3D Edition</p>
         </div>
       </div>
-      <div id="hero-row" class="row align-items-start">
-        <div class="col">
-          <br>
-          <br>
-          <br>
-          <h1 class="text-uppercase fw-bold bs-dark-text-emphasis">Eddie Yang</h1>
-          <h3 class="fw-lighter">Computer Science Student</h3>
+      <div id="hero-row" class="row">
+        <div id="hero-paragraph-lower" class="col d-flex flex-column justify-content-end justify-content-md-center align-items-start align-items-md-center">
+          <p class="fs-1 text-uppercase fw-bold bs-dark-text-emphasis">Eddie Yang</p>
+          <p class="fs-3" class="fw-lighter">Computer Science Student</p>
         </div>
         <div class="col">
 
@@ -52,112 +51,161 @@
       </div>
     </div>
     <div id="button-box">
-      <div id="button-horizontal">
+      <div id="button-horizontal" class="d-flex justify-content-between align-items-end align-items-md-center">
         <button id="button-left" type="button" class="btn btn-outline-dark">&Lt; About</button>
         <button id="button-right" type="button" class="btn btn-outline-dark">Projects &Gt; </button>
       </div>
 
-      <div id="button-vertical" style="display:none">
-        <button id="button-top" type="button" class="btn btn-outline-dark">&#8963;</button>
-        <button id="button-bottom" type="button" class="btn btn-outline-dark">Contact Me!<br>&#8964;</button>
-      </div>
     </div>
 
     <div id="left-side-bar">
-      <div>
-        <div class="card" style="width:40vw; height:auto">
-          <h1 class="card-header">About Me</h1>
-          <h3>Hello! My name is Eddie Yang!</h3>
-          <h6>
-            I am a third-year Computer Science student at the University of Toronto Scarborough, driven by a deep
-            passion for technology and innovation. My academic journey has been marked by a blend of theoretical
-            learning and practical application, providing me with a solid foundation in various areas of computer
-            science, including algorithms, data structures, and software development.
-          </h6>
-          <h6>
-            In addition to my studies, I have gained valuable experience as a teaching assistant. This role has not only
-            honed my understanding of core computer science concepts but also enhanced my ability to communicate complex
-            ideas effectively. I take pride in helping my peers succeed and enjoy the collaborative learning environment
-            that the teaching assistant role fosters.
-          </h6>
-          <h6>
-            My interest in technology extends beyond the classroom. I am constantly exploring new advancements in the
-            tech world, from emerging programming languages to cutting-edge software development tools. I am
-            particularly fascinated by the potential of artificial intelligence and machine learning, and I actively
-            seek opportunities to expand my knowledge and skills in these areas.
-          </h6>
-          <h6>
-            Overall, my goal is to leverage my education and experiences to contribute meaningfully to the tech
-            industry, driving innovation and creating impactful solutions to real-world problems.
-          </h6>
+      <div id="left-cardbox">
+
+        <div class="card mb-3">
+          <div class="row g-0">
+            <div class="col-lg-4">
+              <img src="../public/pictures/selfie.jpg" class="img-fluid rounded-start" alt="selfie">
+            </div>
+            <div class="col-lg-8">
+              <h1 class="card-header"><strong>About Me</strong></h1>
+              <div class="card-body">
+                <h3>Hello! My name is Eddie Yang!</h3>
+              <h6>
+                I am a third-year Computer Science student at the University of Toronto Scarborough, driven by a deep
+                passion for technology and innovation. My academic journey has been marked by a blend of theoretical
+                learning and practical application, providing me with a solid foundation in various areas of computer
+                science, including algorithms, data structures, and software development.
+              </h6>
+              </div>
+            </div>
+          </div>
+          <div class="row g-0">
+            <div class="card-body">
+              
+              <h6>
+                In addition to my studies, I have gained valuable experience as a teaching assistant. This role has not only
+                honed my understanding of core computer science concepts but also enhanced my ability to communicate complex
+                ideas effectively. I take pride in helping my peers succeed and enjoy the collaborative learning environment
+                that the teaching assistant role fosters.
+              </h6>
+              <h6>
+                My interest in technology extends beyond the classroom. I am constantly exploring new advancements in the
+                tech world, from emerging programming languages to cutting-edge software development tools. I am
+                particularly fascinated by the potential of artificial intelligence and machine learning, and I actively
+                seek opportunities to expand my knowledge and skills in these areas.
+              </h6>
+              <h6>
+                Overall, my goal is to leverage my education and experiences to contribute meaningfully to the tech
+                industry, driving innovation and creating impactful solutions to real-world problems.
+              </h6>
+            </div>
+          </div>
         </div>
-        <div class="card" style="width:40vw; height:auto">
-          <h1 class="card-header">Hobbies</h1>
-          <h3>Eat, Sleep, Repeat</h3>
-          <h6>
-            Is only a part of my routine, as I like to keep it consistent. When I'm not immersed in my studies or
-            assisting my peers, I love to unwind and recharge through a variety of hobbies.
-          </h6>
 
-          <h3>Fitness</h3>
-          <h6>
-            I have a strong passion for fitness and spend a significant amount of time at the gym. Working out not only
-            helps me stay physically fit but also provides a great mental boost, keeping me focused and energized.
-          </h6>
+        <div class="card mb-3">
+          <div class="row d-md-flex flex-row-reverse">
+            <div class="col-lg-4">
+              <img src="../public/pictures/pet.jpg" class="img-fluid rounded-start" alt="selfie">
+            </div>
+            <div class="col-lg-8">
+              <h1 class="card-header"><strong>Hobbies</strong></h1>
+              <div class="card-body">
+                <h3>Eat, Sleep, Repeat</h3>
+                <h6>
+                  Is only a part of my routine, as I like to keep it consistent. When I'm not immersed in my studies or
+                  assisting my peers, I love to unwind and recharge through a variety of hobbies.
+                </h6>
+              </div>
+            </div>
+          </div>
+          <div class="row g-0">
+            <div class="card-body">
 
-          <h3>Anime</h3>
-          <h6>
-            I'm an avid anime fan, with some of my favorite series being "Jujutsu Kaisen" and "One Piece." The intricate
-            storylines, compelling characters, and stunning animation captivate me and offer a fantastic escape from the
-            daily grind.
-          </h6>
-
-          <h3>Traveling</h3>
-          <h6>
-            Traveling is another major interest of mine. I have a long bucket list of places I want to visit, including
-            Japan, France, and various parts of Europe. I'm excited about the prospect of experiencing different
-            cultures, tasting diverse cuisines, and exploring historical landmarks.
-          </h6>
-
-          <h3>Nature</h3>
-          <h6>
-            I find solace in nature and enjoy activities like hiking, exploring trails, and visiting lakes. Being
-            outdoors and surrounded by natural beauty is incredibly rejuvenating and helps me maintain a balanced
-            lifestyle.
-          </h6>
-
-          <h6>
-            Through these hobbies, I strive to maintain a well-rounded life, blending physical activity, entertainment,
-            exploration, and tranquility.
-          </h6>
+              <h3>Animals and Pets</h3>
+              <h6>
+                I am a huge fan of fluffy animals! Ever since I got a dog(His name is Teddy), My urge to see and touch anything
+                cute and squishy! From house hold pets such as cats and dogs, to zoo animals like Pandas and Penguins, you name it!
+              </h6>
+    
+              <h3>Fitness</h3>
+              <h6>
+                I have a strong passion for fitness and spend a significant amount of time at the gym. Working out not only
+                helps me stay physically fit but also provides a great mental boost, keeping me focused and energized.
+              </h6>
+    
+              <h3>Anime</h3>
+              <h6>
+                I'm an avid anime fan, with some of my favorite series being "Jujutsu Kaisen" and "One Piece." The intricate
+                storylines, compelling characters, and stunning animation captivate me and offer a fantastic escape from the
+                daily grind.
+              </h6>
+    
+              <h3>Traveling</h3>
+              <h6>
+                Traveling is another major interest of mine. I have a long bucket list of places I want to visit, including
+                Japan, France, and various parts of Europe. I'm excited about the prospect of experiencing different
+                cultures, tasting diverse cuisines, and exploring historical landmarks.
+              </h6>
+    
+              <h3>Nature</h3>
+              <h6>
+                I find solace in nature and enjoy activities like hiking, exploring trails, and visiting lakes. Being
+                outdoors and surrounded by natural beauty is incredibly rejuvenating and helps me maintain a balanced
+                lifestyle.
+              </h6>
+    
+              <h6>
+                Through these hobbies, I strive to maintain a well-rounded life, blending physical activity, entertainment,
+                exploration, and tranquility.
+              </h6>
+            </div>
+          </div>
         </div>
-        <div class="card">
-          <h1 class="card-header">Interests</h1>
-          <h3>Driven By Excitement</h3>
-          <h6>
-            My interests are deeply rooted in the world of technology and its future potential. I am particularly
-            interested in web development, where I enjoy creating dynamic and responsive websites that provide engaging
-            user experiences.
-          </h6>
-          <h6>
-            Another area that fascinates me is Blender and 3D modeling. I love the creativity and precision involved in
-            bringing digital objects to life and exploring the endless possibilities of 3D design.
-          </h6>
-          <h6>
-            Artificial intelligence and machine learning are fields that I find incredibly exciting. The potential for
-            AI to transform industries and solve complex problems is vast, and I am eager to be a part of this
-            revolution. Within AI, neural networks are of special interest to me due to their ability to mimic the human
-            brain's functioning and learn from vast amounts of data.
-          </h6>
-          <h6>
-            Overall, my interests are driven by a curiosity about the future and a desire to be at the forefront of
-            technological advancements. I am committed to continuous learning and innovation, always seeking new ways to
-            apply my knowledge and skills to make a positive impact.
-          </h6>
+
+        <div class="card mb-3">
+          <div class="row g-0">
+            <div class="col-lg-4">
+              <img src="../public/pictures/computer.jpg" class="img-fluid rounded-start" alt="selfie">
+            </div>
+            <div class="col-lg-8">
+              <h1 class="card-header"><strong>Interests</strong></h1>
+              <div class="card-body">
+               
+                <h3>Driven By Excitement</h3>
+                <h6>
+                  My interests are deeply rooted in the world of technology and its future potential. I am particularly
+                  interested in web development, where I enjoy creating dynamic and responsive websites that provide engaging
+                  user experiences.
+                </h6>
+              </div>
+            </div>
+          </div>
+          <div class="row g-0">
+            <div class="card-body">
+              
+             
+              <h6>
+                Another area that fascinates me is Blender and 3D modeling. I love the creativity and precision involved in
+                bringing digital objects to life and exploring the endless possibilities of 3D design.
+              </h6>
+              <h6>
+                Artificial intelligence and machine learning are fields that I find incredibly exciting. The potential for
+                AI to transform industries and solve complex problems is vast, and I am eager to be a part of this
+                revolution. Within AI, neural networks are of special interest to me due to their ability to mimic the human
+                brain's functioning and learn from vast amounts of data.
+              </h6>
+              <h6>
+                Overall, my interests are driven by a curiosity about the future and a desire to be at the forefront of
+                technological advancements. I am committed to continuous learning and innovation, always seeking new ways to
+                apply my knowledge and skills to make a positive impact.
+              </h6>
+            </div>
+          </div>
         </div>
+
       </div>
       <div id="left-button-box">
-        <button id="button-left-close" type="button" class="btn btn-outline-dark">Back &Gt;</button>
+        <button id="button-left-close" type="button" class="btn-close btn-dark"></button>
       </div>
     </div>
 
@@ -165,10 +213,58 @@
 
     <div id="right-side-bar">
       <div id="right-button-box">
-        <button id="button-right-close" type="button" class="btn btn-outline-dark">&Lt;Back</button>
+        <button id="button-right-close" type="button" class="btn-close btn-dark"></button>
       </div>
-      <div>
-        <div class="card" style="width:40vw; height:auto">
+      <div id="right-cardbox" class="resume">
+
+        <div class="container">
+          <h1><strong> Skills Showcase</strong></h1>
+        </div><!-- End Section Title -->
+  
+        <div class="container">
+  
+          <div class="row">
+  
+         
+  
+              <h3 class="resume-title">Education</h3>
+              <div class="resume-item">
+                <h4>Bachelor of Science &amp; Computer Science</h4>
+                <h5>2021 - 2026</h5>
+                <p><em>University of Toronto Scarbroough, Toronto, ON, CA</em></p>
+              </div><!-- Edn Resume Item -->
+  
+            
+  
+            
+              <h3 class="resume-title">Experience</h3>
+              <div class="resume-item">
+                <h4>Web Director, Management Technology Association</h4>
+                <h5>April 2024 - Present</h5>
+                <p><em>University of Toronto Scarborough</em></p>
+                <ul>
+                  <li>Implemented a design-first approach, generated mock-ups with Figma, and updated the official website with HTML, CSS, and Javascript, enhancing user experience and club engagement.</li>
+                </ul>
+              </div><!-- Edn Resume Item -->
+  
+              <div class="resume-item">
+                <h4>Software Developer Intern | Foturn Precicast Component Co., Ltd.</h4>
+                <h5>May 2024 - Present</h5>
+                <p><em>Foturn Precicast Component Co., Ltd., Dalian, China</em></p>
+                <ul>
+                  <li>Inserted and organized over 2000+ item entries with Custom File scripting and SQL, providing clear component info visualization and improving ERP system efficiency.</li>
+                  <li>Contributed to integrating a Manufacturing Execution System (MES) using VB.NET and SQL server, enhancing operational efficiency for component data management systems.</li>
+                </ul>
+              </div><!-- Edn Resume Item -->
+  
+            </div>
+  
+          </div>
+  
+        </div>
+
+
+        <div class="card">
           <h1 class="card-header">Experience</h1>
 
           <h3>Software Developer Intern at Foturn</h3>

@@ -70,7 +70,7 @@ export default class Room{
                child.rotation.y = child.rotation.y + Math.PI
                child.rotation.x = child.rotation.x- Math.PI/2
                
-                child.position.x = child.position.x -2
+                // child.position.x = child.position.x -2
                 child.position.z = child.position.z -1
 
                

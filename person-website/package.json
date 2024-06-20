@@ -12,6 +12,7 @@
     "@types/events": "^3.0.3",
     "@types/three": "^0.165.0",
     "gsap": "^3.12.5",
+    "split-type": "^0.3.4",
     "three": "^0.165.0",
     "typescript": "^5.2.2",
     "vite": "^5.2.0"

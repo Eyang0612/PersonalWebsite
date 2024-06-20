@@ -5,6 +5,7 @@ import GSAP from "gsap"
 import * as THREE from 'three';
 import { EventEmitter } from "events";
 import World from "./World/World";
+import SplitType from "split-type"
 export default class Preloader extends EventEmitter {
 
     experience: Experience;
@@ -40,24 +41,46 @@ export default class Preloader extends EventEmitter {
     }
 
     firstIntro() {
+
+        let preloaderSplit = new SplitType('#preloader h1', {
+            types: 'lines,words,chars',
+            tagName: 'span'
+          })
+        
+
         document.getElementById("loader").style.display = "none"
-        GSAP.to(this.roomChildren["room"]["scale"], {
+        const preloaderTimeline = GSAP.timeline()
+        preloaderTimeline.to(this.roomChildren["room"]["scale"], {
             x: 0.2,
             y: 0.2,
             z: 0.2,
-            duration: 1,
+            duration: 1.5,
             ease: "bounce.out"
         });
-        GSAP.to("#preloader", {
+        preloaderTimeline.to("#preloader", {
             opacity: 1,
-            duration: 1, delay: 1
+            duration: 0.2
         });
+        preloaderTimeline.from('#preloader h1 .char', {
+            x: '100%',
+            opacity: 0,
+            duration: 0.3,
+            ease: 'power1.out',
+            stagger: 0.1,
+          })
+          preloaderTimeline.from('#preloader #preloader-button', {
+            y: '50%',
+            opacity: 0,
+            duration: 0.5,
+            ease: 'power1.out'
+          })
 
     }
     async secondIntro() {
 
         await this.moveCube()
         await this.loadFloor()
+        await this.loadText()
         await this.loadButton();
         this.emit("enablecontrols")
         //    this.loadShadow()
@@ -74,7 +97,7 @@ export default class Preloader extends EventEmitter {
                 x: this.roomChildren["room"]["rotation"]["x"] + Math.PI / 2,
                 duration: 0.5
             }).to(this.roomChildren["room"]["position"], {
-                x: this.roomChildren["room"]["position"]["x"] + 2,
+                x: 0,
                 y: 0,
                 z: this.roomChildren["room"]["position"]["z"] + 1,
                 duration: 0.5
@@ -108,14 +131,50 @@ export default class Preloader extends EventEmitter {
         });
 
     }
+    loadText(){
+        return new Promise((resolve) => {
+        const preloaderTimeline = GSAP.timeline()
+            preloaderTimeline.fromTo("#hero",{opacity:0},
+                { opacity: 1, duration: 0.5 })
+        
+let titleSplit = new SplitType('#hero-paragraph-upper p', {
+  types: 'lines,words,chars',
+  tagName: 'span'
+})
+
+let descriptionSplit = new SplitType('#hero-paragraph-lower p', {
+    types: 'lines,words,chars',
+    tagName: 'span'
+  })
+
+preloaderTimeline.from('#hero-paragraph-lower p .word', {
+  y: '100%',
+  opacity: 0,
+  duration: 0.5,
+  ease: 'power1.out',
+  stagger: 0.1,
+})
+
+
+preloaderTimeline.from('#hero-paragraph-upper p .word', {
+    y: '100%',
+    opacity: 0,
+    duration: 0.5,
+    ease: 'power1.out',
+    stagger: 0.1,
+    onComplete:resolve
+    
+  })
+        })
+
+        
+    }
 
     loadButton() {
         return new Promise((resolve) => {
             
             const preloaderTimeline = GSAP.timeline()
-            preloaderTimeline.fromTo("#hero",{opacity:0},
-                { opacity: 1, duration: 0.5 }).
-                to("#button-horizontal",
+            preloaderTimeline.to("#button-horizontal",
                     { opacity: 1, duration: 0.5})
             preloaderTimeline.pause(0.5)
             preloaderTimeline.resume()

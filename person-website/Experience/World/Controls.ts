@@ -114,7 +114,8 @@ export default class Controls {
         leftSideTimeline.to("#button-horizontal", { opacity: 0, duration: 0.2 });
         leftSideTimeline.to('#left-side-bar', {
             translateX: "0%",
-            duration: 0.5, ease:"power1.out"
+            duration: 0.5, ease: 'power1.out',
+           
           })
     }
     leftSideBarCloseAnimation(){
@@ -179,7 +180,7 @@ rightSideBarOpenAnimation(){
     rightSideTimeline.to("#button-horizontal", { opacity: 0, duration: 0.2 });
     rightSideTimeline.to('#right-side-bar', {
         translateX: "0%",
-        duration: 0.5, ease:"circ"
+        duration: 0.5, ease:"power1.out"
       })
 }
 
