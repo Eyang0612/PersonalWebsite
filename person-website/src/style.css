@@ -153,7 +153,8 @@ main{
     background-color: #ffecab;
   z-index:1000;
   margin:0;
-  padding-right:2vh;
+  padding-right:2vw;
+
   border-left:1px solid;
     transition: transform 0.3s;
     position: fixed;
@@ -174,6 +175,7 @@ main{
 
 #right-cardbox{
   flex:auto;
+  padding-top:2vw;
 }
 
 
@@ -218,7 +220,7 @@ main{
     align-items: flex-end;
 }
 
-a{
+#icon-box a{
   margin:0;
   padding:0;
   font-size:24px;
@@ -297,6 +299,20 @@ i{
   margin-bottom: 20px;
 }
 
+
+.resume .container .resume-header::after{
+  content: "";
+  display: flex;
+  width: 30%;
+  height: 5px;
+  border-radius: 2px;
+  background: black;
+  justify-self: start;
+  align-self: start;
+  margin-right: 100%;
+  text-align: start;
+}
+
 .resume .resume-item {
   padding: 0 0 20px 20px;
   margin-top: -2px;
@@ -316,8 +332,19 @@ i{
 .resume .resume-item h5 {
   font-size: 16px;
   padding: 5px 15px;
-  display: inline-block;
+
   font-weight: 600;
+
+}
+.resume .resume-item button{
+
+  font-size: 16px;
+  padding: 5px 15px;
+
+}
+.resume .resume-item div{
+  display:flex;
+  justify-content: space-between;
   margin-bottom: 10px;
 }
 
