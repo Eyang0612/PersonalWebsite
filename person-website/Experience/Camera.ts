@@ -50,7 +50,7 @@ export default class Camera{
 
         this.scene.add(this.orthographicCamera);
         // this.helper = new THREE.CameraHelper(this.orthographicCamera);
-        // this.scene.add(this.helper)
+//         // this.scene.add(this.helper)
 
 //         const size = 20;
 //         const divisions = 20;

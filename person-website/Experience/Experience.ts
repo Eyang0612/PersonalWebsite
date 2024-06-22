@@ -10,7 +10,7 @@ import Preloader from "./Preloader.ts"
 import World from "./World/World.ts"
 import Controls from './World/Controls.ts';
 import Room from './World/Room.ts';
-
+import Theme from './Theme.ts'
 
 
 export default class Experience{
@@ -26,6 +26,7 @@ world: World;
 preloader: Preloader
 controls:Controls;
 room:Room
+theme:Theme
 
 
 
@@ -43,10 +44,11 @@ room:Room
         this.camera = new Camera()
         this.renderer = new Renderer()
         this.resources = new Resources(assets)
+        this.theme = new Theme()
         this.world = new World();
        
           this.room = this.world.room
-        
+       
       
           this.preloader = new Preloader()
       

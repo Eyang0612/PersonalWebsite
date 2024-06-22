@@ -1,5 +1,6 @@
 import Experience from "../Experience"
 import * as THREE from 'three';
+import { RectAreaLightHelper } from 'three/addons/helpers/RectAreaLightHelper.js';
 import Resources from "../Utils/Resource";
 import { Scene } from "three";
 import GSAP from "gsap"
@@ -82,6 +83,23 @@ export default class Room{
             this.roomChildren[child.name.toLowerCase()] = child;
             
         })
+
+        const width = 0;
+        const height = 0;
+        const intensity = 0;
+        const rectLight = new THREE.PointLight(
+            0xffffff,
+            intensity,
+            width,
+            height
+        );
+        rectLight.position.set(0.9,1.08, 0);
+    
+
+        this.actualRoom.add(rectLight);
+
+        this.roomChildren["rectLight"] = rectLight;
+
         this.roomChildren = this.sortObject(this.roomChildren)
         console.log(this.roomChildren)
         this.scene.add(this.actualRoom)

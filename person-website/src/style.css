@@ -7,6 +7,21 @@
 }
 
 
+/* theme */
+.light-theme{
+  --background-color: #ffecab; 
+  --default-color: #000;
+
+}
+
+.dark-theme{
+  --background-color: #504f5e;
+  --default-color: #fff;
+
+}
+
+
+/* experience section */
 
 #experience{
   position:fixed;
@@ -47,6 +62,7 @@ main{
 }
 
 #preloader{
+  color:var(--default-color);
   position:absolute;
   display:flex;
   opacity: 0;
@@ -66,6 +82,7 @@ main{
 /* Hero Section */
 
 #hero{
+  color:var(--default-color);
   opacity:0;
   padding-top:10vh;
   padding-bottom:10vh;
@@ -103,7 +120,7 @@ main{
   border-radius:0 2vw 2vw 0;
   transform: translateX(-100%);
   width: 50vw;
-    background-color: #ffecab;
+    background-color: var(--background-color);
   z-index:1000;
   margin:0;
   padding-left:2vh;
@@ -150,7 +167,7 @@ main{
   border-radius:2vw 0 0 2vw;
   transform: translateX(100%);
   width: 50vw;
-    background-color: #ffecab;
+    background-color: var(--background-color);
   z-index:1000;
   margin:0;
   padding-right:2vw;
@@ -224,7 +241,7 @@ main{
   margin:0;
   padding:0;
   font-size:24px;
-  color:#000;
+  color:var(--default-color);
   transition: color, 0.1;
   transform:translateY(10vh);
 }
@@ -250,6 +267,8 @@ i{
 }
 
 
+
+
 /* custom info card style */
 
 .card {
@@ -264,14 +283,11 @@ i{
   margin: 2vh 0 2vh 0;
   flex:auto;
   overflow: hidden;
-  color:#000;
-  background-color: #ffecab;
+  color:var(--default-color);
+  background-color: var(--background-color);
   
  
 
-	&.dark {
-		background-color: #18151f;
-	}
 	
   
 }
@@ -291,8 +307,12 @@ i{
 
  /* resume */
 
+ .resume .resume-header{
+  color: var(--default-color);
+ }
+
  .resume .resume-title {
-  color: black;
+  color: var(--default-color);
   font-size: 26px;
   font-weight: 700;
   margin-top: 20px;
@@ -306,7 +326,7 @@ i{
   width: 30%;
   height: 5px;
   border-radius: 2px;
-  background: black;
+  background: var(--default-color);
   justify-self: start;
   align-self: start;
   margin-right: 100%;
@@ -316,7 +336,8 @@ i{
 .resume .resume-item {
   padding: 0 0 20px 20px;
   margin-top: -2px;
-  border-left: 2px solid black;
+  border-left: 2px solid var(--default-color);
+  color: var(--default-color);
   position: relative;
 }
 
@@ -325,14 +346,14 @@ i{
   font-size: 18px;
   font-weight: 600;
   text-transform: uppercase;
-  color: color-mix(in srgb, black, transparent 20%);
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
   margin-bottom: 10px;
 }
 
 .resume .resume-item h5 {
   font-size: 16px;
   padding: 5px 15px;
-
+  color: var(--default-color);
   font-weight: 600;
 
 }
@@ -349,10 +370,12 @@ i{
 }
 
 .resume .resume-item ul {
+  color: var(--default-color);
   padding-left: 20px;
 }
 
 .resume .resume-item ul li {
+  color: var(--default-color);
   padding-bottom: 10px;
 }
 
@@ -368,6 +391,19 @@ i{
   border-radius: 50px;
   left: -9px;
   top: 0;
-  background:  #ffecab;
-  border: 2px solid black;
+  background: var(--background-color);
+  border: 2px solid var(--default-color);
+}
+
+/* Toggle Button */
+
+#theme-button{
+
+  position:absolute;
+  opacity: 0;
+  top:2%;
+  right:1%;
+  margin:0;
+  padding:0;
+  z-index:1000000;
 }

@@ -42,6 +42,10 @@ export default class Preloader extends EventEmitter {
 
     firstIntro() {
 
+        GSAP.to("#theme-button",{
+            opacity:1,
+        })
+
         let preloaderSplit = new SplitType('#preloader h1', {
             types: 'lines,words,chars',
             tagName: 'span'
@@ -79,7 +83,7 @@ export default class Preloader extends EventEmitter {
     async secondIntro() {
 
         await this.moveCube()
-        await this.loadFloor()
+        await this.loadItem()
         await this.loadText()
         await this.loadButton();
         this.emit("enablecontrols")
@@ -112,12 +116,12 @@ export default class Preloader extends EventEmitter {
         })
     }
 
-    loadFloor() {
+    loadItem() {
         return new Promise((resolve) => {
             const preloaderTimeline = GSAP.timeline()
             for (let child in this.roomChildren) {
 
-                if (child !== 'room') {
+                if (child !== 'room' && child !== "rectLight") {
                     preloaderTimeline.to(this.roomChildren[child]["position"],
                         {
                             y: this.roomChildren[child]["position"]["y"] + 2,
@@ -127,6 +131,9 @@ export default class Preloader extends EventEmitter {
                         })
                 }
             }
+            preloaderTimeline.to(this.roomChildren["rectLight"],{
+                intensity:1,
+            })
             preloaderTimeline.add(resolve)
         });
 
