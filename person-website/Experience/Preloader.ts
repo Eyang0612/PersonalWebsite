@@ -6,6 +6,7 @@ import * as THREE from 'three';
 import { EventEmitter } from "events";
 import World from "./World/World";
 import SplitType from "split-type"
+import Theme from "./Theme";
 export default class Preloader extends EventEmitter {
 
     experience: Experience;
@@ -17,6 +18,7 @@ export default class Preloader extends EventEmitter {
     room: THREE.Scene
     roomChildren: Object;
     world: World;
+    theme:Theme;
 
 
     constructor() {
@@ -26,6 +28,7 @@ export default class Preloader extends EventEmitter {
         this.scene = this.experience.scene
         this.canvas = this.experience.canvas
         this.camera = this.experience.camera;
+        this.theme = this.experience.theme
 
         this.world = this.experience.world
         this.world.on("worldready", () => {
@@ -83,7 +86,12 @@ export default class Preloader extends EventEmitter {
     async secondIntro() {
 
         await this.moveCube()
-        await this.loadItem()
+        await this.loadItemPart1()
+        
+        this.loadItemPart3()
+        await this.loadItemPart2()
+        this.loadItemPart4()
+        await this.loadItemPart5()
         await this.loadText()
         await this.loadButton();
         this.emit("enablecontrols")
@@ -116,12 +124,12 @@ export default class Preloader extends EventEmitter {
         })
     }
 
-    loadItem() {
+    loadItemPart1() {
         return new Promise((resolve) => {
             const preloaderTimeline = GSAP.timeline()
             for (let child in this.roomChildren) {
 
-                if (child !== 'room' && child !== "rectLight") {
+                if (child !== 'room' && child !== "rectLight" && child[0] === "1") {
                     preloaderTimeline.to(this.roomChildren[child]["position"],
                         {
                             y: this.roomChildren[child]["position"]["y"] + 2,
@@ -131,13 +139,97 @@ export default class Preloader extends EventEmitter {
                         })
                 }
             }
-            preloaderTimeline.to(this.roomChildren["rectLight"],{
-                intensity:1,
-            })
             preloaderTimeline.add(resolve)
         });
-
     }
+
+    loadItemPart2() {
+        return new Promise((resolve) => {
+            const preloaderTimeline = GSAP.timeline()
+            for (let child in this.roomChildren) {
+
+                if (child !== 'room' && child !== "rectLight" && child[0] === "2") {
+                    preloaderTimeline.to(this.roomChildren[child]["position"],
+                        {
+                            y: this.roomChildren[child]["position"]["y"] + 2,
+                            duration: 0.2,
+                            ease: 'back.out',
+                            
+                        })
+                }
+            }
+
+            preloaderTimeline.add(resolve)
+        });
+    }
+    
+    loadItemPart3() {
+        return new Promise((resolve) => {
+            const preloaderTimeline = GSAP.timeline()
+            for (let child in this.roomChildren) {
+
+                if (child !== 'room' && child !== "rectLight" && child[0] === "3") {
+                    preloaderTimeline.to(this.roomChildren[child]["position"],
+                        {
+                            y: this.roomChildren[child]["position"]["y"] + 2,
+                            duration: 0.2,
+                            ease: 'back.out',
+                            
+                        })
+                }
+            }
+
+            preloaderTimeline.add(resolve)
+        });
+    }
+
+    loadItemPart4() {
+        return new Promise((resolve) => {
+            const preloaderTimeline = GSAP.timeline()
+            for (let child in this.roomChildren) {
+
+                if (child !== 'room' && child !== "rectLight" && child[0] === "4") {
+                    preloaderTimeline.to(this.roomChildren[child]["position"],
+                        {
+                            y: this.roomChildren[child]["position"]["y"] + 2,
+                            duration: 0.2,
+                            ease: 'back.out',
+                            
+                        })
+                }
+            }
+            preloaderTimeline.add(resolve)
+        });
+    }
+
+    loadItemPart5() {
+        return new Promise((resolve) => {
+            const preloaderTimeline = GSAP.timeline()
+            for (let child in this.roomChildren) {
+
+                if (child !== 'room' && child !== "rectLight" && child[0] === "5") {
+                    preloaderTimeline.to(this.roomChildren[child]["position"],
+                        {
+                            y: this.roomChildren[child]["position"]["y"] + 2,
+                            duration: 0.2,
+                            ease: 'back.out',
+                            
+                        })
+                }
+            }
+            preloaderTimeline.to(this.roomChildren["rectLight"],{
+                width:0.5,
+                height:0.5,
+            })
+            if(this.theme.theme === "dark"){
+                preloaderTimeline.to(this.roomChildren["rectLight"],{
+                    intensity:1,
+                })
+            }
+            preloaderTimeline.add(resolve)
+        });
+    }
+
     loadText(){
         return new Promise((resolve) => {
         const preloaderTimeline = GSAP.timeline()

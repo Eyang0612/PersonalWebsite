@@ -64,6 +64,7 @@ theme:Theme
 
         this.preloader.on("enablecontrols", () => {
           // this.room.onMouseMove();
+          this.world.environment.lamplightReady = true;
           this.controls = new Controls();
          
       });

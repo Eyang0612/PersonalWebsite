@@ -12,13 +12,14 @@ export default class Environment{
     ambientlight: THREE.AmbientLight
     room:Room
     roomChildren: Object;
+    lamplightReady:Boolean;
 
 
     constructor(){
         this.experience = new Experience();
         this.scene = this.experience.scene
         this.resources = this.experience.resources
-        
+        this.lamplightReady = false;
         
         this.setSunlight()
 
@@ -66,10 +67,9 @@ export default class Environment{
             GSAP.to(this.ambientlight, {
                 intensity: 0.78,
             });
-            if(this.roomChildren){
+            if(this.roomChildren && this.lamplightReady){
                 GSAP.to(this.roomChildren["rectLight"], {
-                    width:0.5,
-                    height:0.5
+                    intensity:1,
                 });
             }
         } else {
@@ -91,8 +91,7 @@ export default class Environment{
             });
             if(this.roomChildren){
                 GSAP.to(this.roomChildren["rectLight"], {
-                    width:0,
-                    height:0
+                    intensity:0,
                 });
             }
         }
