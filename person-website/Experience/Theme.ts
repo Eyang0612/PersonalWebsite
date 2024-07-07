@@ -39,8 +39,8 @@ export default class Theme extends EventEmitter {
 
             document.body.classList.toggle("light-theme")
             document.body.classList.toggle("dark-theme")
-            // this.toggleButton.classList.toggle('btn-dark')
-            // this.toggleButton.classList.toggle('btn-light')
+            this.toggleButton.classList.toggle('btn-dark')
+            this.toggleButton.classList.toggle('btn-light')
             
             this.emit("switch", this.theme);
             
