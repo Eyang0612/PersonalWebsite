@@ -37,9 +37,10 @@ export default class World extends EventEmitter {
         this.resources = this.experience.resources;
 
         this.resources.on('ready',()=>{
+            this.floor = new Floor()
             this.environment = new Environment();
             this.room = new Room()
-            this.floor = new Floor()
+            
             this.environment.roomChildren = this.room.roomChildren;
      
             this.emit("worldready")

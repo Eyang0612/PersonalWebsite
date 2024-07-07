@@ -218,12 +218,12 @@ export default class Preloader extends EventEmitter {
                 }
             }
             preloaderTimeline.to(this.roomChildren["rectLight"],{
-                width:0.5,
-                height:0.5,
+                width:1,
+                height:1,
             })
             if(this.theme.theme === "dark"){
                 preloaderTimeline.to(this.roomChildren["rectLight"],{
-                    intensity:1,
+                    intensity:2,
                 })
             }
             preloaderTimeline.add(resolve)
@@ -236,17 +236,17 @@ export default class Preloader extends EventEmitter {
             preloaderTimeline.fromTo("#hero",{opacity:0},
                 { opacity: 1, duration: 0.5 })
         
-let titleSplit = new SplitType('#hero-paragraph-upper p', {
+let titleSplit = new SplitType('#hero-paragraph h1', {
   types: 'lines,words,chars',
   tagName: 'span'
 })
 
-let descriptionSplit = new SplitType('#hero-paragraph-lower p', {
+let descriptionSplit = new SplitType('#hero-paragraph p', {
     types: 'lines,words,chars',
     tagName: 'span'
   })
 
-preloaderTimeline.from('#hero-paragraph-lower p .word', {
+preloaderTimeline.from('#hero-paragraph h1 .word', {
   y: '100%',
   opacity: 0,
   duration: 0.5,
@@ -255,7 +255,7 @@ preloaderTimeline.from('#hero-paragraph-lower p .word', {
 })
 
 
-preloaderTimeline.from('#hero-paragraph-upper p .word', {
+preloaderTimeline.from('#hero-paragraph p .word', {
     y: '100%',
     opacity: 0,
     duration: 0.5,

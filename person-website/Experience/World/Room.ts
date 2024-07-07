@@ -88,7 +88,7 @@ export default class Room{
         const height = 0;
         const intensity = 0;
         const rectLight = new THREE.PointLight(
-            0xffffff,
+            0x548EFF,
             intensity,
             width,
             height

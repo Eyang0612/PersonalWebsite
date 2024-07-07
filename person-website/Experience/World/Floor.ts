@@ -22,7 +22,8 @@ export default class Floor {
     setFloor() {
         this.geometry = new THREE.PlaneGeometry(100, 100);
         this.material = new THREE.MeshStandardMaterial({
-            color: 0xd3b683,
+            color: 0xa3b2ff,
+            //397CFF 94b2e3
             side: THREE.BackSide,
         });
         this.plane = new THREE.Mesh(this.geometry, this.material);
@@ -30,6 +31,7 @@ export default class Floor {
         this.plane.rotation.x = Math.PI / 2;
         this.plane.position.y = -0.3;
         this.plane.receiveShadow = true;
+        console.log(this.plane)
     }
 
     setCircles() {
