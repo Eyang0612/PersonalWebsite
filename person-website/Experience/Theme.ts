@@ -1,5 +1,6 @@
 import { EventEmitter } from "events";
 
+//Edit theme for Three js
 export default class Theme extends EventEmitter {
     theme:String
     toggleButton:any
@@ -16,6 +17,7 @@ export default class Theme extends EventEmitter {
         this.setEventListeners();
     }
 
+    // Listen to theme button interation, and change to dark/light theme
     setEventListeners() {
         this.toggleButton.addEventListener("click", () => {
            

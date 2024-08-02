@@ -2,6 +2,8 @@ import Experience from "./Experience"
 import Sizes from "./Utils/Sizes"
 import Camera from "./Camera"
 import * as THREE from 'three';
+
+// Render Model and Elements for Three.js 
 export default class Renderer{
 
     experience: Experience;
@@ -23,6 +25,8 @@ export default class Renderer{
         
     
     }
+
+    // Set up WebGLRenderer for Three js
     setRenderer(){
         this.renderer = new THREE.WebGLRenderer({
             canvas:this.canvas,
@@ -37,12 +41,13 @@ export default class Renderer{
         this.renderer.setPixelRatio(this.sizes.pixelRatio);
     }
 
-  
+  //resize Renderer based on window change
     resize() {
         this.renderer.setSize(this.sizes.width,this.sizes.height);
         this.renderer.setPixelRatio(this.sizes.pixelRatio);
     }
 
+    //update Three Js Scene 
     update() {
         // this.renderer.setViewport(0,0,this.sizes.width,this.sizes.height)
         this.renderer.render(this.scene, this.camera.orthographicCamera);

@@ -1,10 +1,12 @@
-import {EventEmitter }from "events"
+import { EventEmitter } from "events"
+
+// Record the Time frame when called (for animation)
 export default class Time extends EventEmitter {
-   start:number;
-   current:number;
-   elapsed:number;
-   delta:number;
-   
+    start: number;
+    current: number;
+    elapsed: number;
+    delta: number;
+
     constructor() {
         super()
         this.start = Date.now();
@@ -20,7 +22,7 @@ export default class Time extends EventEmitter {
         this.delta = currentTime - this.current;
         this.current = currentTime;
         this.elapsed = this.current - this.start;
-         this.emit("update");
+        this.emit("update");
         window.requestAnimationFrame(() => this.update());
     }
 }

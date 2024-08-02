@@ -10,6 +10,7 @@ import Floor from './Floor'
 import * as THREE from 'three';
 import { EventEmitter } from "events";
 
+//Load all element for Experience
 export default class World extends EventEmitter {
 
     experience: Experience;
@@ -22,53 +23,55 @@ export default class World extends EventEmitter {
     environment: Environment;
     resources: Resources;
     controls: Controls
-    floor:Floor;
-    theme:Theme;
+    floor: Floor;
+    theme: Theme;
 
-    constructor(){
+    constructor() {
         super()
         this.experience = new Experience();
         this.sizes = this.experience.sizes
         this.scene = this.experience.scene
         this.canvas = this.experience.canvas
-        this.camera= this.experience.camera;
+        this.camera = this.experience.camera;
         this.theme = this.experience.theme
-        
+
         this.resources = this.experience.resources;
 
-        this.resources.on('ready',()=>{
+        this.resources.on('ready', () => {
             this.floor = new Floor()
             this.environment = new Environment();
             this.room = new Room()
-            
+
             this.environment.roomChildren = this.room.roomChildren;
-     
+
             this.emit("worldready")
         })
-        
+
         this.theme.on("switch", (theme) => {
             this.switchTheme(theme);
         });
-    
+
     }
 
+    //Call switchTheme from Environment.ts
     switchTheme(theme) {
         if (this.environment) {
             this.environment.switchTheme(theme);
         }
     }
-  
+
     resize() {
-        
+
     }
 
+    //Update room rotation and button controls based on Event Emitter signals
     update() {
-        if(this.controls){
+        if (this.controls) {
             this.controls.update()
         }
-        if(this.room){
+        if (this.room) {
             this.room.update()
         }
-    
+
     }
 }

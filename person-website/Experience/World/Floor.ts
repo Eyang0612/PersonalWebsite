@@ -1,29 +1,31 @@
 import * as THREE from "three";
 import Experience from "../Experience.js";
 
+//Set up Floor Mesh of Three js
 export default class Floor {
-    experience:Experience;
-    scene:any;
-    geometry:THREE.PlaneGeometry
-    material:THREE.MeshStandardMaterial
-    plane:THREE.Mesh
-    circleFirst:THREE.Mesh
-        circleSecond:THREE.Mesh
-        circleThird:THREE.Mesh
+    experience: Experience;
+    scene: any;
+    geometry: THREE.PlaneGeometry
+    material: THREE.MeshStandardMaterial
+    plane: THREE.Mesh
+    circleFirst: THREE.Mesh
+    circleSecond: THREE.Mesh
+    circleThird: THREE.Mesh
     constructor() {
         this.experience = new Experience();
         this.scene = this.experience.scene;
 
         this.setFloor();
         this.setCircles();
-    
+
     }
 
+    //Initialize default floor types
     setFloor() {
         this.geometry = new THREE.PlaneGeometry(100, 100);
         this.material = new THREE.MeshStandardMaterial({
             color: 0xa3b2ff,
-          
+
             side: THREE.BackSide,
         });
         this.plane = new THREE.Mesh(this.geometry, this.material);
@@ -34,6 +36,7 @@ export default class Floor {
         console.log(this.plane)
     }
 
+    //Initialize additional circular floor types
     setCircles() {
         const geometry = new THREE.CircleGeometry(5, 64);
         const material = new THREE.MeshStandardMaterial({ color: 0xe5a1aa });
@@ -47,10 +50,10 @@ export default class Floor {
         this.circleFirst.position.y = -0.29;
 
         this.circleSecond.position.y = -0.28;
-       
+
 
         this.circleThird.position.y = -0.28;
-        this.circleThird.position.z=1.7;
+        this.circleThird.position.z = 1.7;
 
 
         this.circleFirst.scale.set(0, 0, 0);
@@ -60,20 +63,20 @@ export default class Floor {
         this.circleFirst.rotation.x =
             this.circleSecond.rotation.x =
             this.circleThird.rotation.x =
-                -Math.PI / 2;
+            -Math.PI / 2;
 
         this.circleFirst.receiveShadow =
             this.circleSecond.receiveShadow =
             this.circleThird.receiveShadow =
-                true;
+            true;
 
         this.scene.add(this.circleFirst);
         this.scene.add(this.circleSecond);
         this.scene.add(this.circleThird);
     }
-    
 
-    resize() {}
 
-    update() {}
+    resize() { }
+
+    update() { }
 }

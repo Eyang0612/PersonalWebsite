@@ -1,21 +1,23 @@
-import {EventEmitter} from "events";
+import { EventEmitter } from "events";
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
 import Experience from "../Experience"
 import Renderer from "../Renderer";
 import * as THREE from "three"
-export default class Resources extends EventEmitter{
+
+// Load Resources from Assets.ts
+export default class Resources extends EventEmitter {
     experience: Experience;
     renderer: Renderer;
     assets: Array<any>
     items: Object;
     queue: number;
     loaded: number;
-    loaders:Object;
-    video:Object;
+    loaders: Object;
+    video: Object;
     videoTexture: Object;
 
-    constructor(assets?:Array<any>){
+    constructor(assets?: Array<any>) {
         super()
         this.experience = new Experience();
         this.renderer = new Renderer();
@@ -28,19 +30,22 @@ export default class Resources extends EventEmitter{
         this.startLoading();
     }
 
-    setLoaders(){
-        this.loaders = {gltfLoader:new GLTFLoader(),dracoLoader: new DRACOLoader()};
+    //Set up draco/gltf loader from Three Js
+    setLoaders() {
+        this.loaders = { gltfLoader: new GLTFLoader(), dracoLoader: new DRACOLoader() };
         this.loaders['dracoLoader'].setDecoderPath("/draco/");
         this.loaders['gltfLoader'].setDRACOLoader(this.loaders['dracoLoader'])
-        
+
     }
-    startLoading(){
-        for(const asset of this.assets){
-            if(asset.type === "glbModel"){
-                this.loaders['gltfLoader'].load(asset.path, (file)=>{
-                    this.singleAssetLoaded(asset,file)
+
+    //Match glbModel items from Assets.ts to gltf Loader
+    startLoading() {
+        for (const asset of this.assets) {
+            if (asset.type === "glbModel") {
+                this.loaders['gltfLoader'].load(asset.path, (file) => {
+                    this.singleAssetLoaded(asset, file)
                 })
-            }else if (asset.type === "videoTexture") {
+            } else if (asset.type === "videoTexture") {
                 this.video = {};
                 this.videoTexture = {};
 
@@ -64,10 +69,10 @@ export default class Resources extends EventEmitter{
             }
         }
     }
-    singleAssetLoaded(asset:any, file:any){
+    singleAssetLoaded(asset: any, file: any) {
         this.items[asset.name] = file;
         this.loaded++;
-        if(this.loaded === this.queue){
+        if (this.loaded === this.queue) {
             console.log("ready")
             this.emit("ready")
         }

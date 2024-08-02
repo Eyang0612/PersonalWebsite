@@ -6,6 +6,7 @@ import Camera from "../Camera";
 import GSAP from "gsap"
 import Sizes from "../Utils/Sizes";
 
+// Control the Button Interaction
 export default class Controls {
 
     experience: Experience;
@@ -21,15 +22,15 @@ export default class Controls {
     sizes: Sizes;
     camera: Camera;
     time: Time;
-    room:THREE.Scene;
-    
-    lerp: {target:number, current:number,ease:number};
-    back:boolean;
-    circleFirst:THREE.Mesh
-    circleSecond:THREE.Mesh
-    circleThird:THREE.Mesh
-    icons:NodeListOf<Element>
-    iconBox:HTMLElement
+    room: THREE.Scene;
+
+    lerp: { target: number, current: number, ease: number };
+    back: boolean;
+    circleFirst: THREE.Mesh
+    circleSecond: THREE.Mesh
+    circleThird: THREE.Mesh
+    icons: NodeListOf<Element>
+    iconBox: HTMLElement
 
 
 
@@ -53,46 +54,47 @@ export default class Controls {
         this.iconBox = document.getElementById('icon-box');
         console.log(this.icons)
 
-       const leftSideButton = document.getElementById("button-left")
-       leftSideButton.addEventListener("click",() =>{
-        this.leftSideBarOpenAnimation()
-       })
-       const leftSideButtonClose = document.getElementById("button-left-close")
-       leftSideButtonClose.addEventListener("click",() =>{
-        this.leftSideBarCloseAnimation()
-       })
+        const leftSideButton = document.getElementById("button-left")
+        leftSideButton.addEventListener("click", () => {
+            this.leftSideBarOpenAnimation()
+        })
+        const leftSideButtonClose = document.getElementById("button-left-close")
+        leftSideButtonClose.addEventListener("click", () => {
+            this.leftSideBarCloseAnimation()
+        })
 
-       const rightSideButton = document.getElementById("button-right")
-        rightSideButton.addEventListener("click",() =>{
+        const rightSideButton = document.getElementById("button-right")
+        rightSideButton.addEventListener("click", () => {
             this.rightSideBarOpenAnimation()
-        
-       })
 
-       const rightSideButtonClose = document.getElementById("button-right-close")
-       rightSideButtonClose.addEventListener("click",() =>{
-        this.rightSideBarCloseAnimation()
-       })
-        
-       this.bottomBarHandle()
+        })
+
+        const rightSideButtonClose = document.getElementById("button-right-close")
+        rightSideButtonClose.addEventListener("click", () => {
+            this.rightSideBarCloseAnimation()
+        })
+
+        this.bottomBarHandle()
 
     }
 
-    leftSideBarOpenAnimation(){
+    // Opening animation for the Left side Bar
+    leftSideBarOpenAnimation() {
         const leftSideTimeline = GSAP.timeline()
         GSAP.fromTo(
             this.room.position,
-            {x:0,y:0,z:0},
+            { x: 0, y: 0, z: 0 },
             {
                 z: this.sizes.height * 0.005
-                
-                ,duration:1
+
+                , duration: 1
             },
         );
         GSAP.to(
-            "#icon-box",{
-                translateY:"10vh",
-                duration:0.5
-            }
+            "#icon-box", {
+            translateY: "10vh",
+            duration: 0.5
+        }
         )
         GSAP.to(
             this.room.scale,
@@ -100,165 +102,169 @@ export default class Controls {
                 x: 3,
                 y: 3,
                 z: 3,
-                duration:1
+                duration: 1
             },
 
         )
-        GSAP.fromTo("#hero",{opacity:1},{opacity:0,duration:0.2})
+        GSAP.fromTo("#hero", { opacity: 1 }, { opacity: 0, duration: 0.2 })
         leftSideTimeline.to(this.circleFirst.scale, {
             x: 3,
             y: 3,
             z: 3,
-            duration:1
+            duration: 1
         });
         leftSideTimeline.to("#button-horizontal", { opacity: 0, duration: 0.2 });
         leftSideTimeline.to('#left-side-bar', {
             translateX: "0%",
             duration: 0.5, ease: 'power1.out',
-           
-          })
+
+        })
     }
-    leftSideBarCloseAnimation(){
+
+    // Closing animation for Left side bar
+    leftSideBarCloseAnimation() {
         const leftSideTimeline = GSAP.timeline()
         GSAP.to(
-        this.room.position,
-        {x:0,y:0,z:0,duration:0.5});
+            this.room.position,
+            { x: 0, y: 0, z: 0, duration: 0.5 });
         GSAP.to(
             this.room.scale,
             {
                 x: 1,
                 y: 1,
                 z: 1,
-                duration:0.5
+                duration: 0.5
             })
         leftSideTimeline.to('#left-side-bar', {
             translateX: "-100%",
             duration: 0.5,
-    })
-   
-    leftSideTimeline.to(
-        this.circleFirst.scale, {
+        })
+
+        leftSideTimeline.to(
+            this.circleFirst.scale, {
             x: 0,
             y: 0,
             z: 0,
-            duration:0.5
+            duration: 0.5
         }
-    )
-        leftSideTimeline.fromTo(["#hero","#button-horizontal"],{opacity:0},{opacity:1,duration:0.2})
-        leftSideTimeline.to(
-            "#icon-box",{
-                translateY:"0",
-                duration:0.2
-            }
         )
-}
-
-rightSideBarOpenAnimation(){
-    const rightSideTimeline = GSAP.timeline()
-    GSAP.to(
-        this.room.scale,
-        {
+        leftSideTimeline.fromTo(["#hero", "#button-horizontal"], { opacity: 0 }, { opacity: 1, duration: 0.2 })
+        leftSideTimeline.to(
+            "#icon-box", {
+            translateY: "0",
+            duration: 0.2
+        }
+        )
+    }
+    // Opening animation for the Right sider bar
+    rightSideBarOpenAnimation() {
+        const rightSideTimeline = GSAP.timeline()
+        GSAP.to(
+            this.room.scale,
+            {
+                x: 3,
+                y: 3,
+                z: 3,
+                duration: 1
+            },
+        )
+        GSAP.to(
+            "#icon-box", {
+            translateY: "10vh",
+            duration: 0.5
+        }
+        )
+        GSAP.fromTo("#hero", { opacity: 1 }, { opacity: 0, duration: 0.2 })
+        rightSideTimeline.to(this.circleSecond.scale, {
             x: 3,
             y: 3,
             z: 3,
-            duration:1
-        },
-    )
-    GSAP.to(
-        "#icon-box",{
-            translateY:"10vh",
-            duration:0.5
-        }
-    )
-    GSAP.fromTo("#hero",{opacity:1},{opacity:0,duration:0.2})
-    rightSideTimeline.to(this.circleSecond.scale, {
-        x: 3,
-        y: 3,
-        z: 3,
-        duration:1
-    });
-    rightSideTimeline.to("#button-horizontal", { opacity: 0, duration: 0.2 });
-    rightSideTimeline.to('#right-side-bar', {
-        translateX: "0%",
-        duration: 0.5, ease:"power1.out"
-      })
-}
-
-rightSideBarCloseAnimation(){
-    const rightSideTimeline = GSAP.timeline()
-    GSAP.to(
-        this.room.scale,
-        {
-            x: 1,
-            y: 1,
-            z: 1,
-            duration:1
-        })
+            duration: 1
+        });
+        rightSideTimeline.to("#button-horizontal", { opacity: 0, duration: 0.2 });
         rightSideTimeline.to('#right-side-bar', {
-        translateX: "100%",
-        duration: 1,
-})
-
-rightSideTimeline.to(
-    this.circleSecond.scale, {
-        x: 0,
-        y: 0,
-        z: 0,
-        duration:0.5
+            translateX: "0%",
+            duration: 0.5, ease: "power1.out"
+        })
     }
-)
-rightSideTimeline.fromTo(["#hero","#button-horizontal"],{opacity:0},{opacity:1,duration:0.2})
-rightSideTimeline.to(
-    "#icon-box",{
-        translateY:"0",
-        duration:0.5
-    }
-)
-}
 
-bottomBarHandle(){
-    
-            
-    this.iconBox.addEventListener('mouseover', ()=>{
-        GSAP.to(this.circleThird.scale, {
-        x: 3,
-        y: 3,
-        z: 3,
-        duration:0.5
-    });
-        
-    });
-    this.iconBox.addEventListener('mouseleave', ()=>{
-        GSAP.to(this.circleThird.scale, {
+    // Closing animation for the right side bar
+    rightSideBarCloseAnimation() {
+        const rightSideTimeline = GSAP.timeline()
+        GSAP.to(
+            this.room.scale,
+            {
+                x: 1,
+                y: 1,
+                z: 1,
+                duration: 1
+            })
+        rightSideTimeline.to('#right-side-bar', {
+            translateX: "100%",
+            duration: 1,
+        })
+
+        rightSideTimeline.to(
+            this.circleSecond.scale, {
             x: 0,
             y: 0,
             z: 0,
-            duration:0.5
-        });
-    });
+            duration: 0.5
+        }
+        )
+        rightSideTimeline.fromTo(["#hero", "#button-horizontal"], { opacity: 0 }, { opacity: 1, duration: 0.2 })
+        rightSideTimeline.to(
+            "#icon-box", {
+            translateY: "0",
+            duration: 0.5
+        }
+        )
+    }
 
-    this.icons.forEach(icon =>{
-        icon.addEventListener('mouseover', ()=>{
-                GSAP.to(`#${icon.id}`,{
-                    fontSize:"60px",
-                    delay:0.1,
-                    ease:"back.out"
+    //Handle Animation for the Icon, located in the Bottom Bar
+    bottomBarHandle() {
+
+
+        this.iconBox.addEventListener('mouseover', () => {
+            GSAP.to(this.circleThird.scale, {
+                x: 3,
+                y: 3,
+                z: 3,
+                duration: 0.5
+            });
+
+        });
+        this.iconBox.addEventListener('mouseleave', () => {
+            GSAP.to(this.circleThird.scale, {
+                x: 0,
+                y: 0,
+                z: 0,
+                duration: 0.5
+            });
+        });
+
+        this.icons.forEach(icon => {
+            icon.addEventListener('mouseover', () => {
+                GSAP.to(`#${icon.id}`, {
+                    fontSize: "60px",
+                    delay: 0.1,
+                    ease: "back.out"
                 })
-    })
-    icon.addEventListener('mouseleave', ()=>{
-        GSAP.to(`#${icon.id}`,{
-            fontSize:"24px",
-            delay:0.1
+            })
+            icon.addEventListener('mouseleave', () => {
+                GSAP.to(`#${icon.id}`, {
+                    fontSize: "24px",
+                    delay: 0.1
+                })
+            })
         })
-})
-})
-    
-}
+
+    }
 
 
     update() {
-       
 
-        
+
+
     }
 }

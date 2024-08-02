@@ -13,76 +13,80 @@ import Room from './World/Room.ts';
 import Theme from './Theme.ts'
 
 
-export default class Experience{
-    static instance: any;
-canvas: any;
-sizes: Sizes;
-scene: THREE.Scene;
-camera: Camera
-time: Time;
-renderer: Renderer;
-resources: Resources;
-world: World;
-preloader: Preloader
-controls:Controls;
-room:Room
-theme:Theme
+//Load Singleton screen from Three js
+export default class Experience {
+  static instance: any;
+  canvas: any;
+  sizes: Sizes;
+  scene: THREE.Scene;
+  camera: Camera
+  time: Time;
+  renderer: Renderer;
+  resources: Resources;
+  world: World;
+  preloader: Preloader
+  controls: Controls;
+  room: Room
+  theme: Theme
 
 
 
-    constructor(canvas?: any) {
-        if(Experience.instance){
-            return Experience.instance
-        }
-        Experience.instance = this
-        if(canvas){
-        this.canvas = canvas
-        }
-        this.scene = new THREE.Scene()
-        this.sizes= new Sizes()
-        this.time = new Time()
-        this.camera = new Camera()
-        this.renderer = new Renderer()
-        this.resources = new Resources(assets)
-        this.theme = new Theme()
-        this.world = new World();
-       
-          this.room = this.world.room
-       
-      
-          this.preloader = new Preloader()
-      
-        
+  constructor(canvas?: any) {
+    if (Experience.instance) {
+      return Experience.instance
+    }
+    Experience.instance = this
+    if (canvas) {
+      this.canvas = canvas
+    }
+    this.scene = new THREE.Scene()
+    this.sizes = new Sizes()
+    this.time = new Time()
+    this.camera = new Camera()
+    this.renderer = new Renderer()
+    this.resources = new Resources(assets)
+    this.theme = new Theme()
+    this.world = new World();
 
-        this.sizes.on("resize",()=>{
- 
-            this.resize();
-        })
-        this.time.on("update",()=>{
-            this.update();
-        })
+    this.room = this.world.room
 
-        this.preloader.on("enablecontrols", () => {
-          // this.room.onMouseMove();
-          this.world.environment.lamplightReady = true;
-          this.controls = new Controls();
-         
-      });
-        
-      }
 
-      update(){
-        this.camera.update();
-        this.renderer.update();
-        this.world.update();
+    this.preloader = new Preloader()
 
-      }
 
-      resize(){
-        this.camera.resize();
-        this.renderer.resize();
-       
 
-      }
+    this.sizes.on("resize", () => {
+
+      this.resize();
+    })
+    this.time.on("update", () => {
+      this.update();
+    })
+
+    //enable control after preloader finishes
+    this.preloader.on("enablecontrols", () => {
+      // this.room.onMouseMove();
+      this.world.environment.lamplightReady = true;
+      this.controls = new Controls();
+
+    });
+
+  }
+
+  // Update elements based on event emitter (time)
+  update() {
+    this.camera.update();
+    this.renderer.update();
+    this.world.update();
+
+  }
+
+  // Resize elements based on event emitter (window size)
+  resize() {
+    this.camera.resize();
+    this.renderer.resize();
+
+
+  }
 
 }

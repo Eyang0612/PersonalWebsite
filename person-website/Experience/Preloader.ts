@@ -7,6 +7,8 @@ import { EventEmitter } from "events";
 import World from "./World/World";
 import SplitType from "split-type"
 import Theme from "./Theme";
+
+//Set up loading/preloading screens before main section
 export default class Preloader extends EventEmitter {
 
     experience: Experience;
@@ -43,7 +45,7 @@ export default class Preloader extends EventEmitter {
         })
     }
 
-    //
+    //Load first Intro for entering website
     firstIntro() {
 
         GSAP.to("#theme-button", {
@@ -84,6 +86,8 @@ export default class Preloader extends EventEmitter {
         })
 
     }
+
+    // Load second Intro after website initiation
     async secondIntro() {
 
         await this.moveCube()

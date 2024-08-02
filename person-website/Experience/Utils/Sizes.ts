@@ -1,30 +1,32 @@
-import {EventEmitter} from "events";
-export default class Sizes extends EventEmitter{
+import { EventEmitter } from "events";
+
+// Resize Three Js Experience from Window Size change
+export default class Sizes extends EventEmitter {
     width: number;
     height: number;
     aspect: number;
     pixelRatio: number;
     frustrum: number;
-    
-    constructor(){
+
+    constructor() {
         super()
         this.width = window.innerWidth;
         this.height = window.innerHeight;
-        this.aspect = this.width/this.height;
-        this.pixelRatio = Math.min(window.devicePixelRatio,2)
+        this.aspect = this.width / this.height;
+        this.pixelRatio = Math.min(window.devicePixelRatio, 2)
 
-        this.frustrum= 5;
-       
+        this.frustrum = 5;
 
-        window.addEventListener('resize',()=>{
-            
+
+        window.addEventListener('resize', () => {
+
             this.width = window.innerWidth;
-        this.height = window.innerHeight;
-        this.aspect = this.width/this.height;
-        this.pixelRatio = Math.min(window.devicePixelRatio,2)
-        this.emit("resize");         
+            this.height = window.innerHeight;
+            this.aspect = this.width / this.height;
+            this.pixelRatio = Math.min(window.devicePixelRatio, 2)
+            this.emit("resize");
         }
-    )
-        
+        )
+
     }
 }
