@@ -43,6 +43,7 @@ export default class Preloader extends EventEmitter {
         })
     }
 
+    //
     firstIntro() {
 
         GSAP.to("#theme-button", {
@@ -95,7 +96,7 @@ export default class Preloader extends EventEmitter {
         await this.loadText()
         await this.loadButton();
         this.emit("enablecontrols")
-        //    this.loadShadow()
+
     }
 
     moveCube() {

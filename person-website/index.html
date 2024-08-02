@@ -4,7 +4,9 @@
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Space+Grotesk:wght@300..700&display=swap"
+    rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="./src/style.css">
@@ -14,11 +16,17 @@
 </head>
 
 <body class="light-theme">
+
+  <!-- Experience Section (Three.js) -->
   <div id="experience">
     <canvas id="experience-canvas"></canvas>
   </div>
 
+  <!-- End Experience Section  -->
+
   <main>
+
+    <!-- Loading Section  -->
     <div id="loader">
       <div class="spinner-border" role="status">
       </div>
@@ -32,28 +40,30 @@
           style="--fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1;"></i></button>
     </div>
 
+    <!-- End Loading Section  -->
+
+    <!-- Hero Section -->
+
     <section id="hero" class="d-flex  flex-column justify-content-center align-items-center">
       <div id="hero-paragraph">
         <h1>Hey there! I'm <span id="name">Eddie</span>.</h1>
         <p>I'm a student at the University of Toronto</p>
 
       </div>
-  
-        <div id="button-horizontal" class="d-flex justify-content-between align-items-end align-items-md-center">
-          <button id="button-left" type="button" class="btn btn-light">&Lt; About</button>
-          <button id="button-right" type="button" class="btn btn-light">Skills &Gt; </button>
-        </div>
 
-        <button id="theme-button" class="btn btn-light"><i class="fa-solid fa-moon"></i></button>
-   
+      <div id="button-horizontal" class="d-flex justify-content-between align-items-end align-items-md-center">
+        <button id="button-left" type="button" class="btn btn-light">&Lt; About</button>
+        <button id="button-right" type="button" class="btn btn-light">Skills &Gt; </button>
+      </div>
 
+      <button id="theme-button" class="btn btn-light"><i class="fa-solid fa-moon"></i></button>
     </section>
 
+<!-- End Hero Section -->
 
+<!-- About Section -->
 
-    
-
-    <div id="left-side-bar">
+    <section id="left-side-bar">
       <div id="left-cardbox">
 
         <div class="card mb-3">
@@ -67,7 +77,7 @@
                 <h3>Hello! My name is Eddie Yang!</h3>
                 <h6>
                   I am a third-year Computer Science student at the University of Toronto Scarborough, driven by a deep
-                  passion for technology and innovation. 
+                  passion for technology and innovation.
                 </h6>
               </div>
             </div>
@@ -76,8 +86,8 @@
             <div class="card-body">
               <h6>
                 My academic journey has been marked by a blend of theoretical
-                  learning and practical application, providing me with a solid foundation in various areas of computer
-                  science, including algorithms, data structures, and software development.
+                learning and practical application, providing me with a solid foundation in various areas of computer
+                science, including algorithms, data structures, and software development.
               </h6>
               <h6>
                 In addition to my studies, I have gained valuable experience as a teaching assistant. This role has not
@@ -176,11 +186,13 @@
       <div id="left-button-box">
         <button id="button-left-close" type="button" class="btn-close btn-dark"></button>
       </div>
-    </div>
+    </section>
 
+<!-- End About Section -->
 
+<!-- Skills Section -->
 
-    <div id="right-side-bar">
+    <section id="right-side-bar">
       <div id="right-button-box">
         <button id="button-right-close" type="button" class="btn-close btn-dark"></button>
       </div>
@@ -232,10 +244,12 @@
             <div class="resume-item">
               <h4>Course Representative</h4>
               <h5>Oct 2023 - Dec 2023</h5>
-              <p><em> AMACSS Association | University of Toronto	</em></p>
+              <p><em> AMACSS Association | University of Toronto </em></p>
               <ul>
-                <li>Hosted and led a Discrete Mathematics review seminar, effectively presenting complex concepts to 300+ students, reducing class drop rate</li>
-                <li>Organized seminar content and materials with club members, ensuring comprehensive coverage of key topics relevant to the curriculum, and demonstrating strong teamwork and writing skills.</li>
+                <li>Hosted and led a Discrete Mathematics review seminar, effectively presenting complex concepts to
+                  300+ students, reducing class drop rate</li>
+                <li>Organized seminar content and materials with club members, ensuring comprehensive coverage of key
+                  topics relevant to the curriculum, and demonstrating strong teamwork and writing skills.</li>
               </ul>
             </div><!-- Edn Resume Item -->
 
@@ -244,36 +258,43 @@
             <div class="resume-item">
               <h4>Photo Location Guesser Full Stack Web Project, GeoSnap</h4>
               <div>
-              <a class="btn btn-outline-dark" href="https://github.com/Eyang0612/GeoSnap" role="button" target="_blank">Check it Out! <i class="fa-solid fa-right-from-bracket" ></i></a>
-              <h5>April 2024 - Present</h5>
-             </div>
+                <a class="btn btn-outline-dark" href="https://github.com/Eyang0612/GeoSnap" role="button"
+                  target="_blank">Check it Out! <i class="fa-solid fa-right-from-bracket"></i></a>
+                <h5>April 2024 - Present</h5>
+              </div>
               <p><em>HTML,CSS,Javascript, React, Node, Express, MongoDB</em></p>
               <ul>
-                <li>Developed a full-stack web application with a responsive user interface through React and JavaScript, featuring advanced user authentication, protected routing, and full CRUD operations.</li>
+                <li>Developed a full-stack web application with a responsive user interface through React and
+                  JavaScript, featuring advanced user authentication, protected routing, and full CRUD operations.</li>
               </ul>
             </div><!-- Edn Resume Item -->
 
             <div class="resume-item">
               <h4>Course Management Android Mobile App, EduPortal</h4>
               <div>
-                <a class="btn btn-outline-dark" href="https://github.com/Eyang0612/EduPortal-CSCB07" role="button" target="_blank">Check it Out! <i class="fa-solid fa-right-from-bracket" ></i></a>
+                <a class="btn btn-outline-dark" href="https://github.com/Eyang0612/EduPortal-CSCB07" role="button"
+                  target="_blank">Check it Out! <i class="fa-solid fa-right-from-bracket"></i></a>
                 <h5>May 2024 - Present</h5>
-               </div>
+              </div>
               <p><em>Java, Firebase, Andriod Studio, JUnit, Kotlin, Eclipse, Git/Github</em></p>
               <ul>
-                <li>Employed an Android Mobile app with Android Studio, Java and Eclipse IDE, adhered to OOP, SOLID design principles and clean code practices to ensure course material maintainability.</li>
+                <li>Employed an Android Mobile app with Android Studio, Java and Eclipse IDE, adhered to OOP, SOLID
+                  design principles and clean code practices to ensure course material maintainability.</li>
               </ul>
             </div><!-- Edn Resume Item -->
 
             <div class="resume-item">
               <h4>3D Personal Website</h4>
               <div>
-                <a class="btn btn-outline-dark" href="https://github.com/Eyang0612/PersonalWebsite" role="button" target="_blank">Check it Out! <i class="fa-solid fa-right-from-bracket" ></i></a>
+                <a class="btn btn-outline-dark" href="https://github.com/Eyang0612/PersonalWebsite" role="button"
+                  target="_blank">Check it Out! <i class="fa-solid fa-right-from-bracket"></i></a>
                 <h5>June 2024 - Present</h5>
-               </div>
+              </div>
               <p><em>TypeScript, Three.js, GSAP, Blender</em></p>
               <ul>
-                <li>Utilized TypeScript for functionality, Blender for 3D modelling, Three.js for interactive 3D graphics and rendering,  and Bootstrap for responsive design, creating a visually engaging personal website.</li>
+                <li>Utilized TypeScript for functionality, Blender for 3D modelling, Three.js for interactive 3D
+                  graphics and rendering, and Bootstrap for responsive design, creating a visually engaging personal
+                  website.</li>
               </ul>
             </div>
           </div>
@@ -281,17 +302,18 @@
         </div>
 
       </div>
-    </div>
+    </section>
 
-    </div>
+<!-- End Skill Section -->
 
-    
+<!-- Icon Section -->
     <div id="bottom-bar">
       <div id="icon-box">
         <a id="email" href="mailto:eddi.yang@mail.utoronto.ca" target="_blank">
           <i class="fa-solid fa-envelope"></i>
         </a>
-        <a id="instagram" href="https://www.instagram.com/eddie_yanggg?igsh=bjR0dnUxMHd1c3R2&utm_source=qr" target="_blank">
+        <a id="instagram" href="https://www.instagram.com/eddie_yanggg?igsh=bjR0dnUxMHd1c3R2&utm_source=qr"
+          target="_blank">
           <i class="fa-brands fa-instagram"></i>
         </a>
         <a id="github" href="https://github.com/Eyang0612/" target="_blank">
@@ -302,7 +324,7 @@
         </a>
       </div>
     </div>
-
+<!-- End Icon Section -->
 
 
   </main>

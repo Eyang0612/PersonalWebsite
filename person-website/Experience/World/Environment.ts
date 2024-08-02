@@ -51,16 +51,14 @@ export default class Environment{
     }
 
     switchTheme(theme) {
-        // console.log(this.sunLight);
+     
         if (theme === "dark") {
             this.plane.material['color'].setHex(0x121212)
             GSAP.to(this.sunlight.color, {
                 r: 0.1,
                 g: 0.1,
                 b: 0.1,
-                // r: 0.17254901960784313,
-                // g: 0.23137254901960785,
-                // b: 0.6862745098039216,
+            
             });
             GSAP.to(this.ambientlight.color, {
                 r: 0.5,
