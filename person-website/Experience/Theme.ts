@@ -24,6 +24,7 @@ export default class Theme extends EventEmitter {
             this.theme = this.theme === "light" ? "dark" : "light";
             let btnOutline = document.body.querySelectorAll(".btn-outline-dark")
             let btnSolid = document.body.querySelectorAll(".btn-light")
+            let btnCloseBox = document.body.querySelectorAll(".close-button-box")
             const icon = document.body.querySelector("#theme-button i")
             icon.classList.toggle("fa-sun")
             icon.classList.toggle("fa-moon")
@@ -38,6 +39,13 @@ export default class Theme extends EventEmitter {
 
             }
             btnSolid.forEach(element => element.classList.toggle("btn-dark"))
+            btnCloseBox.forEach(element => {if (element.getAttribute('data-bs-theme') == 'dark') {
+                element.setAttribute('data-bs-theme','light')
+            }
+            else {
+                element.setAttribute('data-bs-theme','dark')
+            }
+        })
 
             document.body.classList.toggle("light-theme")
             document.body.classList.toggle("dark-theme")

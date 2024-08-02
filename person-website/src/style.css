@@ -202,6 +202,10 @@ i{
 
 /* Side Bar Section (About and Skills) */
 
+
+
+
+
 #left-side-bar{
   border-radius:0 2vw 2vw 0;
   transform: translateX(-100%);
@@ -231,7 +235,7 @@ i{
  
 }
 
-#left-button-box{
+#left-side-bar .close-button-box{
   display:flex;
   position:sticky;
   top:0;
@@ -283,7 +287,7 @@ i{
 
 
 
-#right-button-box{
+#right-side-bar .close-button-box{
   display:flex;
   position:sticky;
   top:0;
