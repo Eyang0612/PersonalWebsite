@@ -13,6 +13,7 @@
   --default-color: #000;
   --secondary-color:#548EFF;
 
+
 }
 
 .dark-theme{
@@ -84,7 +85,7 @@ main{
 /* Hero Section */
 
 #hero{
-  position:absolute;
+  position:relative;
   color:var(--default-color);
   opacity:0;
   padding: 56px 178px;
@@ -94,6 +95,24 @@ main{
   height:100vh;
   flex:auto;
 }
+
+#theme-button{
+
+  position:absolute;
+  opacity: 0;
+  top:56px;
+  right:178px;
+  margin:0;
+  padding:0;
+  z-index:500;
+
+  border-radius: 8px;
+  border: 1px solid var(--secondary-color);
+  color: var(--secondary-color);
+  
+  box-shadow: 0px 0px 50px 0px rgba(84, 142, 255, 0.30);
+}
+
 #hero-paragraph{
   position:relative;
   width:100%;
@@ -309,26 +328,15 @@ i{
   
 }
 
-.card-header{
-  text-align: center;
+.card img{
+  border: var(--secondary-color) 10px inset;
 }
 
-/* mobile design */
+.card-header{
+  text-align: center;
+  
+}
 
-@media (max-width: 767px) { 
-  #left-side-bar,#right-side-bar{
-    width:100vw;
-  }
-
-  #hero{
-    position:absolute;
-    color:var(--default-color);
-    opacity:0;
-    padding: 25px 0px;
-   
-  }
-
- }
 
  /* resume */
 
@@ -422,13 +430,25 @@ i{
 
 /* Toggle Button */
 
-#theme-button{
 
-  position:absolute;
-  opacity: 0;
-  top:2%;
-  right:1%;
-  margin:0;
-  padding:0;
-  z-index:1000000;
-}
+
+/* mobile design */
+
+@media (max-width: 767px) { 
+  #left-side-bar,#right-side-bar{
+    width:100vw;
+  }
+
+  #hero{
+    position:absolute;
+    color:var(--default-color);
+    opacity:0;
+    padding: 25px 0px;
+   
+  }
+  #theme-button{
+    top: 25px;
+    right: 0;
+  }
+
+ }
