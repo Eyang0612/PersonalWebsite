@@ -18,7 +18,7 @@ export default class Preloader extends EventEmitter {
     room: THREE.Scene
     roomChildren: Object;
     world: World;
-    theme:Theme;
+    theme: Theme;
 
 
     constructor() {
@@ -45,15 +45,15 @@ export default class Preloader extends EventEmitter {
 
     firstIntro() {
 
-        GSAP.to("#theme-button",{
-            opacity:1,
+        GSAP.to("#theme-button", {
+            opacity: 1,
         })
 
         let preloaderSplit = new SplitType('#preloader h1', {
             types: 'lines,words,chars',
             tagName: 'span'
-          })
-        
+        })
+
 
         document.getElementById("loader").style.display = "none"
         const preloaderTimeline = GSAP.timeline()
@@ -68,26 +68,26 @@ export default class Preloader extends EventEmitter {
             opacity: 1,
             duration: 0.2
         });
-        preloaderTimeline.from('#preloader h1 .char', {
-            x: '100%',
+        preloaderTimeline.from('#preloader h1 .word', {
+            y: '-100%',
             opacity: 0,
-            duration: 0.3,
+            duration: 0.5,
             ease: 'power1.out',
-            stagger: 0.1,
-          })
-          preloaderTimeline.from('#preloader #preloader-button', {
+            stagger: 0.2,
+        })
+        preloaderTimeline.from('#preloader #preloader-button', {
             y: '50%',
             opacity: 0,
             duration: 0.5,
             ease: 'power1.out'
-          })
+        })
 
     }
     async secondIntro() {
 
         await this.moveCube()
         await this.loadItemPart1()
-        
+
         this.loadItemPart3()
         await this.loadItemPart2()
         this.loadItemPart4()
@@ -135,7 +135,7 @@ export default class Preloader extends EventEmitter {
                             y: this.roomChildren[child]["position"]["y"] + 2,
                             duration: 0.15,
                             ease: 'back.out',
-                            
+
                         })
                 }
             }
@@ -152,9 +152,9 @@ export default class Preloader extends EventEmitter {
                     preloaderTimeline.to(this.roomChildren[child]["position"],
                         {
                             y: this.roomChildren[child]["position"]["y"] + 2,
-                            duration: 0.2,
+                            duration: 0.15,
                             ease: 'back.out',
-                            
+
                         })
                 }
             }
@@ -162,7 +162,7 @@ export default class Preloader extends EventEmitter {
             preloaderTimeline.add(resolve)
         });
     }
-    
+
     loadItemPart3() {
         return new Promise((resolve) => {
             const preloaderTimeline = GSAP.timeline()
@@ -172,9 +172,9 @@ export default class Preloader extends EventEmitter {
                     preloaderTimeline.to(this.roomChildren[child]["position"],
                         {
                             y: this.roomChildren[child]["position"]["y"] + 2,
-                            duration: 0.2,
+                            duration: 0.15,
                             ease: 'back.out',
-                            
+
                         })
                 }
             }
@@ -192,9 +192,9 @@ export default class Preloader extends EventEmitter {
                     preloaderTimeline.to(this.roomChildren[child]["position"],
                         {
                             y: this.roomChildren[child]["position"]["y"] + 2,
-                            duration: 0.2,
+                            duration: 0.15,
                             ease: 'back.out',
-                            
+
                         })
                 }
             }
@@ -211,72 +211,80 @@ export default class Preloader extends EventEmitter {
                     preloaderTimeline.to(this.roomChildren[child]["position"],
                         {
                             y: this.roomChildren[child]["position"]["y"] + 2,
-                            duration: 0.2,
+                            duration: 0.15,
                             ease: 'back.out',
-                            
+
                         })
                 }
             }
-            preloaderTimeline.to(this.roomChildren["rectLight"],{
-                width:1,
-                height:1,
+            preloaderTimeline.to(this.roomChildren["rectLight"], {
+                width: 1,
+                height: 1,
             })
-            if(this.theme.theme === "dark"){
-                preloaderTimeline.to(this.roomChildren["rectLight"],{
-                    intensity:2,
+            if (this.theme.theme === "dark") {
+                preloaderTimeline.to(this.roomChildren["rectLight"], {
+                    intensity: 2,
                 })
             }
             preloaderTimeline.add(resolve)
         });
     }
 
-    loadText(){
+    loadText() {
         return new Promise((resolve) => {
-        const preloaderTimeline = GSAP.timeline()
-            preloaderTimeline.fromTo("#hero",{opacity:0},
-                { opacity: 1, duration: 0.5 })
-        
-let titleSplit = new SplitType('#hero-paragraph h1', {
-  types: 'lines,words,chars',
-  tagName: 'span'
-})
+            const preloaderTimeline = GSAP.timeline()
+            preloaderTimeline.fromTo("#hero", { opacity: 0 },
+                { opacity: 1, duration: 0.2 })
 
-let descriptionSplit = new SplitType('#hero-paragraph p', {
-    types: 'lines,words,chars',
-    tagName: 'span'
-  })
+            let titleSplit = new SplitType('#hero-paragraph h1', {
+                types: 'lines,words,chars',
+                tagName: 'span'
+            })
 
-preloaderTimeline.from('#hero-paragraph h1 .word', {
-  y: '100%',
-  opacity: 0,
-  duration: 0.5,
-  ease: 'power1.out',
-  stagger: 0.1,
-})
+            let descriptionSplit = new SplitType('#hero-paragraph p', {
+                types: 'lines,words,chars',
+                tagName: 'span'
+            })
+
+            
+
+           
+
+            preloaderTimeline.from('#hero-paragraph h1 .word', {
+                y: '100%',
+                opacity: 0,
+                duration: 0.5,
+                ease: 'power1.out',
+                stagger: 0.1,
+            })
 
 
-preloaderTimeline.from('#hero-paragraph p .word', {
-    y: '100%',
-    opacity: 0,
-    duration: 0.5,
-    ease: 'power1.out',
-    stagger: 0.1,
-    onComplete:resolve
-    
-  })
+            preloaderTimeline.from('#hero-paragraph p .word', {
+                y: '100%',
+                opacity: 0,
+                duration: 0.5,
+                ease: 'power1.out',
+                stagger: 0.1,
+                onComplete: resolve
+
+            })
         })
 
-        
+
     }
 
     loadButton() {
         return new Promise((resolve) => {
-            
+
             const preloaderTimeline = GSAP.timeline()
             preloaderTimeline.to("#button-horizontal",
-                    { opacity: 1, duration: 0.5})
-            preloaderTimeline.pause(0.5)
-            preloaderTimeline.resume()
+                {
+                opacity: 1,
+                duration: 0.5,
+                ease: 'power1.out',
+          
+            })
+   
             const icons = document.querySelectorAll('#icon-box a');
             icons.forEach(icon => {
                 preloaderTimeline.to(
@@ -296,25 +304,6 @@ preloaderTimeline.from('#hero-paragraph p .word', {
 
 
 
-    // loadShadow(){
-    //     for(let child in this.roomChildren){
-
-    //         if(child !== "room"){
-    //             this.roomChildren[child].castShadow = true;
-    //             this.roomChildren[child].receiveShadow = true;
-    //              if(this.roomChildren[child] instanceof THREE.Group || this.roomChildren[child] instanceof THREE.Object3D){
-
-    //                 this.roomChildren[child].children.forEach(groupChild => {
-    //                      groupChild.castShadow = true;
-    //                     groupChild.receiveShadow = true;
-
-    //                 })
-
-    //              }
-    //         }
-    //     }
-
-    // }
 
     resize() {
 

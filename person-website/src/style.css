@@ -320,6 +320,14 @@ i{
     width:100vw;
   }
 
+  #hero{
+    position:absolute;
+    color:var(--default-color);
+    opacity:0;
+    padding: 25px 0px;
+   
+  }
+
  }
 
  /* resume */

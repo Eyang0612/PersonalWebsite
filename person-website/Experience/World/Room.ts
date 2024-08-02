@@ -68,6 +68,7 @@ export default class Room{
             }
             if(child.name === "Room"){
        
+         
                child.rotation.y = child.rotation.y + Math.PI
                child.rotation.x = child.rotation.x- Math.PI/2
                
