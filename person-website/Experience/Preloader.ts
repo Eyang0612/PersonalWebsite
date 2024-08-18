@@ -97,9 +97,10 @@ export default class Preloader extends EventEmitter {
         await this.loadItemPart2()
         this.loadItemPart4()
         await this.loadItemPart5()
+        this.emit("enablecontrols")
         await this.loadText()
         await this.loadButton();
-        this.emit("enablecontrols")
+        
 
     }
 
