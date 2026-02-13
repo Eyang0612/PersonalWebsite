@@ -26,6 +26,11 @@ export default class Renderer{
     
     }
 
+    // Get optimal pixel ratio (clamped to prevent performance issues on high-DPI displays)
+    getOptimalPixelRatio(): number {
+        return Math.min(window.devicePixelRatio, 2);
+    }
+
     // Set up WebGLRenderer for Three js
     setRenderer(){
         // Detect mobile devices for conditional optimizations
@@ -42,13 +47,13 @@ export default class Renderer{
         this.renderer.shadowMap.enabled = true;
         this.renderer.shadowMap.type = THREE.PCFSoftShadowMap; // Better performance than VSM
         this.renderer.setSize(this.sizes.width, this.sizes.height);
-        this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Clamp pixel ratio
+        this.renderer.setPixelRatio(this.getOptimalPixelRatio());
     }
 
   //resize Renderer based on window change
     resize() {
         this.renderer.setSize(this.sizes.width,this.sizes.height);
-        this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Clamp pixel ratio
+        this.renderer.setPixelRatio(this.getOptimalPixelRatio());
     }
 
     //update Three Js Scene 
