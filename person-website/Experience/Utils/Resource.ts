@@ -53,8 +53,10 @@ export default class Resources extends EventEmitter {
                     },
                     (xhr) => {
                         // Track loading progress
-                        const progress = (xhr.loaded / xhr.total) * 100;
-                        this.emit("progress", { asset: asset.name, progress });
+                        if (xhr.total > 0) {
+                            const progress = (xhr.loaded / xhr.total) * 100;
+                            this.emit("progress", { asset: asset.name, progress });
+                        }
                     },
                     (error) => {
                         console.error(`Error loading ${asset.name}:`, error);
