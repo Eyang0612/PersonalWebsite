@@ -12,7 +12,10 @@
   --background-color: #D5E7FF; 
   --default-color: #000;
   --secondary-color:#548EFF;
-
+  --sidebar-bg: rgba(255, 255, 255, 0.4);
+  --border-color: rgba(84, 142, 255, 0.25);
+  --text-secondary: #333;
+  --accent-color: #2563eb;
 
 }
 
@@ -20,7 +23,10 @@
   --background-color: #504f5e;
   --default-color: #fff;
   --secondary-color:#fff;
-
+  --sidebar-bg: rgba(0, 0, 0, 0.2);
+  --border-color: rgba(255, 255, 255, 0.15);
+  --text-secondary: #d1d5db;
+  --accent-color: #60a5fa;
 }
 
 
@@ -1229,15 +1235,31 @@ i{
 
 .skill-category {
   background: var(--sidebar-bg);
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 1.5rem;
   border: 1px solid var(--border-color);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left: 3px solid var(--accent-color);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-left-width 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-category::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent-color), transparent);
+  opacity: 0.5;
 }
 
 .skill-category:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(84, 142, 255, 0.15);
+  box-shadow: 0 8px 20px rgba(84, 142, 255, 0.2);
+  border-left-width: 5px;
 }
 
 .category-title {
@@ -1345,17 +1367,33 @@ i{
 
 .project-card {
   background: var(--sidebar-bg);
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 1.75rem;
   border: 1px solid var(--border-color);
+  border-left: 3px solid var(--accent-color);
+  backdrop-filter: blur(10px);
   transition: all 0.3s ease;
   cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent-color), transparent);
+  opacity: 0.5;
 }
 
 .project-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(84, 142, 255, 0.2);
-  border-color: var(--secondary-color);
+  box-shadow: 0 12px 24px rgba(84, 142, 255, 0.25);
+  border-left-width: 5px;
+  border-color: var(--border-color);
 }
 
 .project-title {

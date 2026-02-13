@@ -66,7 +66,7 @@ export default class Preloader extends EventEmitter {
             x: 0.2,
             y: 0.2,
             z: 0.2,
-            duration: 1.05,
+            duration: 0.8,
             ease: "back.out(1.4)"
         });
         preloaderTimeline.to("#preloader", {
@@ -124,7 +124,7 @@ export default class Preloader extends EventEmitter {
                 y: 1,
                 z: 1,
                 duration: 0.7,
-                ease: "back.out(1.7)",
+                ease: "back.out(1.5)",
                 onComplete: resolve
             });
         })
@@ -149,9 +149,9 @@ export default class Preloader extends EventEmitter {
             items.forEach((item, index) => {
                 preloaderTimeline.to(item.position, {
                     y: item.position.y + 2,
-                    duration: 0.5,
+                    duration: 0.7,
                     ease: 'power2.out',
-                }, index * 0.03); // Stagger by 0.03s for smooth wave
+                }, index * 0.04); // Stagger by 0.03s for smooth wave
             });
             
             // Animate light

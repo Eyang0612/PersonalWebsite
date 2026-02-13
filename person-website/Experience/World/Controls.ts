@@ -149,13 +149,13 @@ export default class Controls {
             x: 3,
             y: 3,
             z: 3,
-            duration: 0.8,
+            duration: 0.6,
             ease: 'power2.out'
         });
         leftSideTimeline.to("#button-grid", { opacity: 0, duration: 0.25, ease: 'power2.out' });
         leftSideTimeline.to('#left-side-bar', {
             translateX: "0%",
-            duration: 0.7,
+            duration: 0.5,
             ease: 'power3.out',
 
         }, "-=0.1")
@@ -225,13 +225,13 @@ export default class Controls {
             x: 3,
             y: 3,
             z: 3,
-            duration: 0.8,
+            duration: 0.6,
             ease: 'power2.out'
         });
         rightSideTimeline.to("#button-grid", { opacity: 0, duration: 0.25, ease: 'power2.out' });
         rightSideTimeline.to('#right-side-bar', {
             translateX: "0%",
-            duration: 0.7,
+            duration: 0.5,
             ease: "power3.out"
         }, "-=0.1")
     }
@@ -308,13 +308,13 @@ export default class Controls {
             x: 3,
             y: 3,
             z: 3,
-            duration: 0.8,
+            duration: 0.6,
             ease: 'power2.out'
         });
         leftSideTimeline.to("#button-grid", { opacity: 0, duration: 0.25, ease: 'power2.out' });
         leftSideTimeline.to('#left-side-bar-2', {
             left: "0%",
-            duration: 0.7,
+            duration: 0.5,
             ease: 'power3.out',
 
         }, "-=0.1")
@@ -385,13 +385,13 @@ export default class Controls {
             x: 3,
             y: 3,
             z: 3,
-            duration: 0.8,
+            duration: 0.6,
             ease: 'power2.out'
         });
         rightSideTimeline.to("#button-grid", { opacity: 0, duration: 0.25, ease: 'power2.out' });
         rightSideTimeline.to('#right-side-bar-2', {
             right: "0%",
-            duration: 0.7,
+            duration: 0.5,
             ease: "power3.out"
         }, "-=0.1")
     }
