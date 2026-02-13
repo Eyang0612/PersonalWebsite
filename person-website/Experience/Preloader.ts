@@ -50,6 +50,8 @@ export default class Preloader extends EventEmitter {
 
         GSAP.to("#theme-button", {
             opacity: 1,
+            duration: 0.3,
+            ease: 'power2.out'
         })
 
         let preloaderSplit = new SplitType('#preloader h1', {
@@ -64,25 +66,26 @@ export default class Preloader extends EventEmitter {
             x: 0.2,
             y: 0.2,
             z: 0.2,
-            duration: 1.5,
-            ease: "bounce.out"
+            duration: 1.05,
+            ease: "back.out(1.4)"
         });
         preloaderTimeline.to("#preloader", {
             opacity: 1,
-            duration: 0.2
+            duration: 0.14,
+            ease: 'power2.out'
         });
         preloaderTimeline.from('#preloader h1 .word', {
             y: '-100%',
             opacity: 0,
-            duration: 0.5,
-            ease: 'power1.out',
-            stagger: 0.2,
+            duration: 0.35,
+            ease: 'power2.out',
+            stagger: 0.14,
         })
         preloaderTimeline.from('#preloader #preloader-button', {
             y: '50%',
             opacity: 0,
-            duration: 0.5,
-            ease: 'power1.out'
+            duration: 0.35,
+            ease: 'power2.out'
         })
 
     }
@@ -91,12 +94,7 @@ export default class Preloader extends EventEmitter {
     async secondIntro() {
 
         await this.moveCube()
-        await this.loadItemPart1()
-
-        this.loadItemPart3()
-        await this.loadItemPart2()
-        this.loadItemPart4()
-        await this.loadItemPart5()
+        await this.loadAllItems()
         this.emit("enablecontrols")
         await this.loadText()
         await this.loadButton();
@@ -113,128 +111,67 @@ export default class Preloader extends EventEmitter {
             }).to(this.roomChildren["room"]["rotation"], {
                 y: this.roomChildren["room"]["rotation"]["y"] - Math.PI,
                 x: this.roomChildren["room"]["rotation"]["x"] + Math.PI / 2,
-                duration: 0.5
+                duration: 0.4,
+                ease: "power2.inOut"
             }).to(this.roomChildren["room"]["position"], {
                 x: 0,
                 y: 0,
                 z: this.roomChildren["room"]["position"]["z"] + 1,
-                duration: 0.5
+                duration: 0.4,
+                ease: "power2.inOut"
             }).to(this.roomChildren["room"]["scale"], {
                 x: 1,
                 y: 1,
                 z: 1,
-                duration: 0.5,
-                ease: "back.out(2.5)",
+                duration: 0.7,
+                ease: "back.out(1.7)",
                 onComplete: resolve
             });
         })
     }
 
-    loadItemPart1() {
+    loadAllItems() {
         return new Promise((resolve) => {
             const preloaderTimeline = GSAP.timeline()
+            const items = [];
+            
+            // Collect all items to animate
             for (let child in this.roomChildren) {
-
-                if (child !== 'room' && child !== "rectLight" && child[0] === "1") {
-                    preloaderTimeline.to(this.roomChildren[child]["position"],
-                        {
-                            y: this.roomChildren[child]["position"]["y"] + 2,
-                            duration: 0.15,
-                            ease: 'back.out',
-
-                        })
+                if (child !== 'room' && child !== "rectLight") {
+                    items.push({
+                        name: child,
+                        position: this.roomChildren[child]["position"]
+                    });
                 }
             }
-            preloaderTimeline.add(resolve)
-        });
-    }
-
-    loadItemPart2() {
-        return new Promise((resolve) => {
-            const preloaderTimeline = GSAP.timeline()
-            for (let child in this.roomChildren) {
-
-                if (child !== 'room' && child !== "rectLight" && child[0] === "2") {
-                    preloaderTimeline.to(this.roomChildren[child]["position"],
-                        {
-                            y: this.roomChildren[child]["position"]["y"] + 2,
-                            duration: 0.15,
-                            ease: 'back.out',
-
-                        })
-                }
-            }
-
-            preloaderTimeline.add(resolve)
-        });
-    }
-
-    loadItemPart3() {
-        return new Promise((resolve) => {
-            const preloaderTimeline = GSAP.timeline()
-            for (let child in this.roomChildren) {
-
-                if (child !== 'room' && child !== "rectLight" && child[0] === "3") {
-                    preloaderTimeline.to(this.roomChildren[child]["position"],
-                        {
-                            y: this.roomChildren[child]["position"]["y"] + 2,
-                            duration: 0.15,
-                            ease: 'back.out',
-
-                        })
-                }
-            }
-
-            preloaderTimeline.add(resolve)
-        });
-    }
-
-    loadItemPart4() {
-        return new Promise((resolve) => {
-            const preloaderTimeline = GSAP.timeline()
-            for (let child in this.roomChildren) {
-
-                if (child !== 'room' && child !== "rectLight" && child[0] === "4") {
-                    preloaderTimeline.to(this.roomChildren[child]["position"],
-                        {
-                            y: this.roomChildren[child]["position"]["y"] + 2,
-                            duration: 0.15,
-                            ease: 'back.out',
-
-                        })
-                }
-            }
-            preloaderTimeline.add(resolve)
-        });
-    }
-
-    loadItemPart5() {
-        return new Promise((resolve) => {
-            const preloaderTimeline = GSAP.timeline()
-            for (let child in this.roomChildren) {
-
-                if (child !== 'room' && child !== "rectLight" && child[0] === "5") {
-                    preloaderTimeline.to(this.roomChildren[child]["position"],
-                        {
-                            y: this.roomChildren[child]["position"]["y"] + 2,
-                            duration: 0.15,
-                            ease: 'back.out',
-
-                        })
-                }
-            }
+            
+            // Animate all items with stagger for smooth wave effect
+            items.forEach((item, index) => {
+                preloaderTimeline.to(item.position, {
+                    y: item.position.y + 2,
+                    duration: 0.5,
+                    ease: 'power2.out',
+                }, index * 0.03); // Stagger by 0.03s for smooth wave
+            });
+            
+            // Animate light
             preloaderTimeline.to(this.roomChildren["rectLight"], {
                 width: 1,
                 height: 1,
-            })
+            }, "-=0.2")
+            
             if (this.theme.theme === "dark") {
                 preloaderTimeline.to(this.roomChildren["rectLight"], {
                     intensity: 2,
-                })
+                    duration: 0.3
+                });
             }
+            
             preloaderTimeline.add(resolve)
         });
     }
+
+
 
     loadText() {
         return new Promise((resolve) => {
@@ -260,8 +197,8 @@ export default class Preloader extends EventEmitter {
                 y: '100%',
                 opacity: 0,
                 duration: 0.5,
-                ease: 'power1.out',
-                stagger: 0.1,
+                ease: 'power2.out',
+                stagger: 0.04,
             })
 
 
@@ -269,8 +206,8 @@ export default class Preloader extends EventEmitter {
                 y: '100%',
                 opacity: 0,
                 duration: 0.5,
-                ease: 'power1.out',
-                stagger: 0.1,
+                ease: 'power2.out',
+                stagger: 0.04,
                 onComplete: resolve
 
             })
@@ -283,22 +220,22 @@ export default class Preloader extends EventEmitter {
         return new Promise((resolve) => {
 
             const preloaderTimeline = GSAP.timeline()
-            preloaderTimeline.to("#button-horizontal",
+            preloaderTimeline.to("#button-grid",
                 {
                 opacity: 1,
-                duration: 0.5,
-                ease: 'power1.out',
+                duration: 0.4,
+                ease: 'power2.out',
           
             })
    
             const icons = document.querySelectorAll('#icon-box a');
-            icons.forEach(icon => {
+            icons.forEach((icon, index) => {
                 preloaderTimeline.to(
                     `#${icon.id}`, {
                     translateY: "0",
-                    duration: 0.2,
-                    ease: "back.out"
-                }
+                    duration: 0.35,
+                    ease: "power2.out"
+                }, index * 0.05 // Stagger icons
                 )
 
             })

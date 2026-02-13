@@ -12,7 +12,9 @@ const components: ComponentConfig[] = [
   { selector: '#loader-component', path: '/components/loader.html' },
   { selector: '#hero-component', path: '/components/hero.html' },
   { selector: '#about-component', path: '/components/about.html' },
+  { selector: '#experience-component', path: '/components/experience.html' },
   { selector: '#skills-component', path: '/components/skills.html' },
+  { selector: '#projects-component', path: '/components/projects.html' },
   { selector: '#footer-component', path: '/components/footer.html' }
 ];
 

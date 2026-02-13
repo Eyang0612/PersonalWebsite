@@ -55,24 +55,60 @@ export default class Controls {
         console.log(this.icons)
 
         const leftSideButton = document.getElementById("button-left")
-        leftSideButton.addEventListener("click", () => {
-            this.leftSideBarOpenAnimation()
-        })
+        if (leftSideButton) {
+            leftSideButton.addEventListener("click", () => {
+                this.leftSideBarOpenAnimation()
+            })
+        }
+        
         const leftSideButtonClose = document.getElementById("button-left-close")
-        leftSideButtonClose.addEventListener("click", () => {
-            this.leftSideBarCloseAnimation()
-        })
+        if (leftSideButtonClose) {
+            leftSideButtonClose.addEventListener("click", () => {
+                this.leftSideBarCloseAnimation()
+            })
+        }
 
         const rightSideButton = document.getElementById("button-right")
-        rightSideButton.addEventListener("click", () => {
-            this.rightSideBarOpenAnimation()
-
-        })
+        if (rightSideButton) {
+            rightSideButton.addEventListener("click", () => {
+                this.rightSideBarOpenAnimation()
+            })
+        }
 
         const rightSideButtonClose = document.getElementById("button-right-close")
-        rightSideButtonClose.addEventListener("click", () => {
-            this.rightSideBarCloseAnimation()
-        })
+        if (rightSideButtonClose) {
+            rightSideButtonClose.addEventListener("click", () => {
+                this.rightSideBarCloseAnimation()
+            })
+        }
+
+        const leftSideButton2 = document.getElementById("button-left-2")
+        if (leftSideButton2) {
+            leftSideButton2.addEventListener("click", () => {
+                this.leftSideBar2OpenAnimation()
+            })
+        }
+
+        const leftSideButton2Close = document.getElementById("button-left-close-2")
+        if (leftSideButton2Close) {
+            leftSideButton2Close.addEventListener("click", () => {
+                this.leftSideBar2CloseAnimation()
+            })
+        }
+
+        const rightSideButton2 = document.getElementById("button-right-2")
+        if (rightSideButton2) {
+            rightSideButton2.addEventListener("click", () => {
+                this.rightSideBar2OpenAnimation()
+            })
+        }
+
+        const rightSideButton2Close = document.getElementById("button-right-close-2")
+        if (rightSideButton2Close) {
+            rightSideButton2Close.addEventListener("click", () => {
+                this.rightSideBar2CloseAnimation()
+            })
+        }
 
         this.bottomBarHandle()
 
@@ -85,15 +121,16 @@ export default class Controls {
             this.room.position,
             { x: 0, y: 0, z: 0 },
             {
-                z: this.sizes.height * 0.005
-
-                , duration: 1
+                z: this.sizes.height * 0.005,
+                duration: 0.8,
+                ease: 'power2.out'
             },
         );
         GSAP.to(
             "#icon-box", {
             translateY: "10vh",
-            duration: 0.5
+            duration: 0.6,
+            ease: 'power2.out'
         }
         )
         GSAP.to(
@@ -102,23 +139,26 @@ export default class Controls {
                 x: 3,
                 y: 3,
                 z: 3,
-                duration: 1
+                duration: 0.8,
+                ease: 'power2.out'
             },
 
         )
-        GSAP.fromTo("#hero", { opacity: 1 }, { opacity: 0, duration: 0.2 })
+        GSAP.fromTo("#hero", { opacity: 1 }, { opacity: 0, duration: 0.25, ease: 'power2.out' })
         leftSideTimeline.to(this.circleFirst.scale, {
             x: 3,
             y: 3,
             z: 3,
-            duration: 1
+            duration: 0.8,
+            ease: 'power2.out'
         });
-        leftSideTimeline.to("#button-horizontal", { opacity: 0, duration: 0.2 });
+        leftSideTimeline.to("#button-grid", { opacity: 0, duration: 0.25, ease: 'power2.out' });
         leftSideTimeline.to('#left-side-bar', {
             translateX: "0%",
-            duration: 0.5, ease: 'power1.out',
+            duration: 0.7,
+            ease: 'power3.out',
 
-        })
+        }, "-=0.1")
     }
 
     // Closing animation for Left side bar
@@ -126,18 +166,20 @@ export default class Controls {
         const leftSideTimeline = GSAP.timeline()
         GSAP.to(
             this.room.position,
-            { x: 0, y: 0, z: 0, duration: 0.5 });
+            { x: 0, y: 0, z: 0, duration: 0.7, ease: 'power2.inOut' });
         GSAP.to(
             this.room.scale,
             {
                 x: 1,
                 y: 1,
                 z: 1,
-                duration: 0.5
+                duration: 0.7,
+                ease: 'power2.inOut'
             })
         leftSideTimeline.to('#left-side-bar', {
             translateX: "-100%",
-            duration: 0.5,
+            duration: 0.6,
+            ease: 'power3.in'
         })
 
         leftSideTimeline.to(
@@ -145,15 +187,17 @@ export default class Controls {
             x: 0,
             y: 0,
             z: 0,
-            duration: 0.5
-        }
+            duration: 0.6,
+            ease: 'power2.in'
+        }, "-=0.4"
         )
-        leftSideTimeline.fromTo(["#hero", "#button-horizontal"], { opacity: 0 }, { opacity: 1, duration: 0.2 })
+        leftSideTimeline.fromTo(["#hero", "#button-grid"], { opacity: 0 }, { opacity: 1, duration: 0.3, ease: 'power2.out' })
         leftSideTimeline.to(
             "#icon-box", {
             translateY: "0",
-            duration: 0.2
-        }
+            duration: 0.4,
+            ease: 'power2.out'
+        }, "-=0.2"
         )
     }
     // Opening animation for the Right sider bar
@@ -165,27 +209,31 @@ export default class Controls {
                 x: 3,
                 y: 3,
                 z: 3,
-                duration: 1
+                duration: 0.8,
+                ease: 'power2.out'
             },
         )
         GSAP.to(
             "#icon-box", {
             translateY: "10vh",
-            duration: 0.5
+            duration: 0.6,
+            ease: 'power2.out'
         }
         )
-        GSAP.fromTo("#hero", { opacity: 1 }, { opacity: 0, duration: 0.2 })
+        GSAP.fromTo("#hero", { opacity: 1 }, { opacity: 0, duration: 0.25, ease: 'power2.out' })
         rightSideTimeline.to(this.circleSecond.scale, {
             x: 3,
             y: 3,
             z: 3,
-            duration: 1
+            duration: 0.8,
+            ease: 'power2.out'
         });
-        rightSideTimeline.to("#button-horizontal", { opacity: 0, duration: 0.2 });
+        rightSideTimeline.to("#button-grid", { opacity: 0, duration: 0.25, ease: 'power2.out' });
         rightSideTimeline.to('#right-side-bar', {
             translateX: "0%",
-            duration: 0.5, ease: "power1.out"
-        })
+            duration: 0.7,
+            ease: "power3.out"
+        }, "-=0.1")
     }
 
     // Closing animation for the right side bar
@@ -197,11 +245,13 @@ export default class Controls {
                 x: 1,
                 y: 1,
                 z: 1,
-                duration: 1
+                duration: 0.7,
+                ease: 'power2.inOut'
             })
         rightSideTimeline.to('#right-side-bar', {
             translateX: "100%",
-            duration: 1,
+            duration: 0.6,
+            ease: 'power3.in'
         })
 
         rightSideTimeline.to(
@@ -209,15 +259,177 @@ export default class Controls {
             x: 0,
             y: 0,
             z: 0,
-            duration: 0.5
-        }
+            duration: 0.6,
+            ease: 'power2.in'
+        }, "-=0.4"
         )
-        rightSideTimeline.fromTo(["#hero", "#button-horizontal"], { opacity: 0 }, { opacity: 1, duration: 0.2 })
+        rightSideTimeline.fromTo(["#hero", "#button-grid"], { opacity: 0 }, { opacity: 1, duration: 0.3, ease: 'power2.out' })
         rightSideTimeline.to(
             "#icon-box", {
             translateY: "0",
-            duration: 0.5
+            duration: 0.4,
+            ease: 'power2.out'
+        }, "-=0.2"
+        )
+    }
+
+    // Opening animation for the Left side Bar 2 (Skills)
+    leftSideBar2OpenAnimation() {
+        const leftSideTimeline = GSAP.timeline()
+        GSAP.fromTo(
+            this.room.position,
+            { x: 0, y: 0, z: 0 },
+            {
+                z: this.sizes.height * 0.005,
+                duration: 0.8,
+                ease: 'power2.out'
+            },
+        );
+        GSAP.to(
+            "#icon-box", {
+            translateY: "10vh",
+            duration: 0.6,
+            ease: 'power2.out'
         }
+        )
+        GSAP.to(
+            this.room.scale,
+            {
+                x: 3,
+                y: 3,
+                z: 3,
+                duration: 0.8,
+                ease: 'power2.out'
+            },
+
+        )
+        GSAP.fromTo("#hero", { opacity: 1 }, { opacity: 0, duration: 0.25, ease: 'power2.out' })
+        leftSideTimeline.to(this.circleFirst.scale, {
+            x: 3,
+            y: 3,
+            z: 3,
+            duration: 0.8,
+            ease: 'power2.out'
+        });
+        leftSideTimeline.to("#button-grid", { opacity: 0, duration: 0.25, ease: 'power2.out' });
+        leftSideTimeline.to('#left-side-bar-2', {
+            left: "0%",
+            duration: 0.7,
+            ease: 'power3.out',
+
+        }, "-=0.1")
+    }
+
+    // Closing animation for Left side bar 2 (Skills)
+    leftSideBar2CloseAnimation() {
+        const leftSideTimeline = GSAP.timeline()
+        GSAP.to(
+            this.room.position,
+            { x: 0, y: 0, z: 0, duration: 0.7, ease: 'power2.inOut' });
+        GSAP.to(
+            this.room.scale,
+            {
+                x: 1,
+                y: 1,
+                z: 1,
+                duration: 0.7,
+                ease: 'power2.inOut'
+            })
+        leftSideTimeline.to('#left-side-bar-2', {
+            left: "-100%",
+            duration: 0.6,
+            ease: 'power3.in'
+        })
+
+        leftSideTimeline.to(
+            this.circleFirst.scale, {
+            x: 0,
+            y: 0,
+            z: 0,
+            duration: 0.6,
+            ease: 'power2.in'
+        }, "-=0.4"
+        )
+        leftSideTimeline.fromTo(["#hero", "#button-grid"], { opacity: 0 }, { opacity: 1, duration: 0.3, ease: 'power2.out' })
+        leftSideTimeline.to(
+            "#icon-box", {
+            translateY: "0",
+            duration: 0.4,
+            ease: 'power2.out'
+        }, "-=0.2"
+        )
+    }
+
+    // Opening animation for the Right sider bar 2 (Projects)
+    rightSideBar2OpenAnimation() {
+        const rightSideTimeline = GSAP.timeline()
+        GSAP.to(
+            this.room.scale,
+            {
+                x: 3,
+                y: 3,
+                z: 3,
+                duration: 0.8,
+                ease: 'power2.out'
+            },
+        )
+        GSAP.to(
+            "#icon-box", {
+            translateY: "10vh",
+            duration: 0.6,
+            ease: 'power2.out'
+        }
+        )
+        GSAP.fromTo("#hero", { opacity: 1 }, { opacity: 0, duration: 0.25, ease: 'power2.out' })
+        rightSideTimeline.to(this.circleSecond.scale, {
+            x: 3,
+            y: 3,
+            z: 3,
+            duration: 0.8,
+            ease: 'power2.out'
+        });
+        rightSideTimeline.to("#button-grid", { opacity: 0, duration: 0.25, ease: 'power2.out' });
+        rightSideTimeline.to('#right-side-bar-2', {
+            right: "0%",
+            duration: 0.7,
+            ease: "power3.out"
+        }, "-=0.1")
+    }
+
+    // Closing animation for the right side bar 2 (Projects)
+    rightSideBar2CloseAnimation() {
+        const rightSideTimeline = GSAP.timeline()
+        GSAP.to(
+            this.room.scale,
+            {
+                x: 1,
+                y: 1,
+                z: 1,
+                duration: 0.7,
+                ease: 'power2.inOut'
+            })
+        rightSideTimeline.to('#right-side-bar-2', {
+            right: "-100%",
+            duration: 0.6,
+            ease: 'power3.in'
+        })
+
+        rightSideTimeline.to(
+            this.circleSecond.scale, {
+            x: 0,
+            y: 0,
+            z: 0,
+            duration: 0.6,
+            ease: 'power2.in'
+        }, "-=0.4"
+        )
+        rightSideTimeline.fromTo(["#hero", "#button-grid"], { opacity: 0 }, { opacity: 1, duration: 0.3, ease: 'power2.out' })
+        rightSideTimeline.to(
+            "#icon-box", {
+            translateY: "0",
+            duration: 0.4,
+            ease: 'power2.out'
+        }, "-=0.2"
         )
     }
 
