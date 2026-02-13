@@ -3,31 +3,35 @@
  * Dynamically loads HTML components into the main page
  */
 
+// Import HTML files as raw strings (Vite will bundle them)
+import loaderHtml from '../components/loader.html?raw';
+import heroHtml from '../components/hero.html?raw';
+import aboutHtml from '../components/about.html?raw';
+import experienceHtml from '../components/experience.html?raw';
+import skillsHtml from '../components/skills.html?raw';
+import projectsHtml from '../components/projects.html?raw';
+import footerHtml from '../components/footer.html?raw';
+
 interface ComponentConfig {
   selector: string;
-  path: string;
+  html: string;
 }
 
 const components: ComponentConfig[] = [
-  { selector: '#loader-component', path: '/components/loader.html' },
-  { selector: '#hero-component', path: '/components/hero.html' },
-  { selector: '#about-component', path: '/components/about.html' },
-  { selector: '#experience-component', path: '/components/experience.html' },
-  { selector: '#skills-component', path: '/components/skills.html' },
-  { selector: '#projects-component', path: '/components/projects.html' },
-  { selector: '#footer-component', path: '/components/footer.html' }
+  { selector: '#loader-component', html: loaderHtml },
+  { selector: '#hero-component', html: heroHtml },
+  { selector: '#about-component', html: aboutHtml },
+  { selector: '#experience-component', html: experienceHtml },
+  { selector: '#skills-component', html: skillsHtml },
+  { selector: '#projects-component', html: projectsHtml },
+  { selector: '#footer-component', html: footerHtml }
 ];
 
 /**
- * Loads a single component from the specified path and injects it into the target element
+ * Loads a single component by injecting HTML into the target element
  */
-async function loadComponent(selector: string, path: string): Promise<void> {
+function loadComponent(selector: string, html: string): void {
   try {
-    const response = await fetch(path);
-    if (!response.ok) {
-      throw new Error(`Failed to load component: ${path} (${response.status})`);
-    }
-    const html = await response.text();
     const targetElement = document.querySelector(selector);
     
     if (targetElement) {
@@ -36,7 +40,7 @@ async function loadComponent(selector: string, path: string): Promise<void> {
       console.warn(`Target element not found: ${selector}`);
     }
   } catch (error) {
-    console.error(`Error loading component ${path}:`, error);
+    console.error(`Error loading component ${selector}:`, error);
   }
 }
 
@@ -44,10 +48,9 @@ async function loadComponent(selector: string, path: string): Promise<void> {
  * Loads all components defined in the components array
  */
 export async function loadAllComponents(): Promise<void> {
-  const loadPromises = components.map(({ selector, path }) => 
-    loadComponent(selector, path)
+  components.forEach(({ selector, html }) => 
+    loadComponent(selector, html)
   );
   
-  await Promise.all(loadPromises);
   console.log('All components loaded successfully');
 }
