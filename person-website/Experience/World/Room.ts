@@ -146,4 +146,24 @@ export default class Room {
         // this.lerpZ.current = GSAP.utils.interpolate(this.lerpZ.current,this.lerpZ.target,this.lerpZ.ease)
         // this.actualRoom.rotation.x = this.lerpZ.current;
     }
+
+    // Dispose of geometries and materials to prevent memory leaks
+    dispose() {
+        this.actualRoom.traverse((child) => {
+            if (child instanceof THREE.Mesh) {
+                if (child.geometry) {
+                    child.geometry.dispose();
+                }
+                if (child.material) {
+                    if (Array.isArray(child.material)) {
+                        child.material.forEach(material => material.dispose());
+                    } else {
+                        child.material.dispose();
+                    }
+                }
+            }
+        });
+    }
+    // Note: For future optimization, consider merging static geometries
+    // to reduce draw calls and improve rendering performance
 }

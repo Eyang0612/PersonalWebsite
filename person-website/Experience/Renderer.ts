@@ -28,23 +28,27 @@ export default class Renderer{
 
     // Set up WebGLRenderer for Three js
     setRenderer(){
+        // Detect mobile devices for conditional optimizations
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        
         this.renderer = new THREE.WebGLRenderer({
             canvas:this.canvas,
-            antialias:true,
+            antialias: !isMobile, // Disable on mobile for better performance
+            powerPreference: "high-performance",
         })
 
         this.renderer.toneMapping = THREE.LinearToneMapping;
         this.renderer.toneMappingExposure = 1.5;
         this.renderer.shadowMap.enabled = true;
-        this.renderer.shadowMap.type = THREE.VSMShadowMap;
+        this.renderer.shadowMap.type = THREE.PCFSoftShadowMap; // Better performance than VSM
         this.renderer.setSize(this.sizes.width, this.sizes.height);
-        this.renderer.setPixelRatio(this.sizes.pixelRatio);
+        this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Clamp pixel ratio
     }
 
   //resize Renderer based on window change
     resize() {
         this.renderer.setSize(this.sizes.width,this.sizes.height);
-        this.renderer.setPixelRatio(this.sizes.pixelRatio);
+        this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Clamp pixel ratio
     }
 
     //update Three Js Scene 
