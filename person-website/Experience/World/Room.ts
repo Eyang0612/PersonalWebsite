@@ -146,4 +146,21 @@ export default class Room {
         // this.lerpZ.current = GSAP.utils.interpolate(this.lerpZ.current,this.lerpZ.target,this.lerpZ.ease)
         // this.actualRoom.rotation.x = this.lerpZ.current;
     }
+
+    dispose() {
+        this.actualRoom.traverse((child) => {
+            if (child instanceof THREE.Mesh) {
+                if (child.geometry) {
+                    child.geometry.dispose();
+                }
+                if (child.material) {
+                    if (Array.isArray(child.material)) {
+                        child.material.forEach(material => material.dispose());
+                    } else {
+                        child.material.dispose();
+                    }
+                }
+            }
+        });
+    }
 }

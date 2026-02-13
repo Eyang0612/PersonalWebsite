@@ -31,12 +31,13 @@ export default class Renderer{
         this.renderer = new THREE.WebGLRenderer({
             canvas:this.canvas,
             antialias:true,
+            powerPreference: "high-performance",
         })
 
         this.renderer.toneMapping = THREE.LinearToneMapping;
         this.renderer.toneMappingExposure = 1.5;
         this.renderer.shadowMap.enabled = true;
-        this.renderer.shadowMap.type = THREE.VSMShadowMap;
+        this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
         this.renderer.setSize(this.sizes.width, this.sizes.height);
         this.renderer.setPixelRatio(this.sizes.pixelRatio);
     }

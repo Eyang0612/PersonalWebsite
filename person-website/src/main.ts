@@ -1,9 +1,19 @@
 //import './style.css'
 import Experience from '../Experience/Experience'
 import { inject } from "@vercel/analytics"
+import { loadAllComponents } from './componentLoader'
 
-const experience = new Experience(document.querySelector('#experience-canvas'));
-inject();
+// Initialize components first, then start Experience
+async function init() {
+  // Wait for all HTML components to load
+  await loadAllComponents();
+  
+  // Now it's safe to initialize Experience (which needs DOM elements)
+  const experience = new Experience(document.querySelector('#experience-canvas'));
+  inject();
+}
+
+init();
 
 // import typescriptLogo from './typescript.svg'
 // import viteLogo from '/vite.svg'

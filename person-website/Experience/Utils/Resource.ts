@@ -33,7 +33,7 @@ export default class Resources extends EventEmitter {
     //Set up draco/gltf loader from Three Js
     setLoaders() {
         this.loaders = { gltfLoader: new GLTFLoader(), dracoLoader: new DRACOLoader() };
-        this.loaders['dracoLoader'].setDecoderPath("/draco/");
+        this.loaders['dracoLoader'].setDecoderPath("https://www.gstatic.com/draco/versioned/decoders/1.5.6/");
         this.loaders['gltfLoader'].setDRACOLoader(this.loaders['dracoLoader'])
 
     }
@@ -53,8 +53,9 @@ export default class Resources extends EventEmitter {
                 this.video[asset.name].src = asset.path;
                 this.video[asset.name].muted = true;
                 this.video[asset.name].playsInline = true;
-                this.video[asset.name].autoplay = true;
                 this.video[asset.name].loop = true;
+                this.video[asset.name].preload = "auto";
+                this.video[asset.name].autoplay = true;
                 this.video[asset.name].play();
 
                 this.videoTexture[asset.name] = new THREE.VideoTexture(
