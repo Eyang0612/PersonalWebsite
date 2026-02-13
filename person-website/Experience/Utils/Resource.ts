@@ -70,10 +70,10 @@ export default class Resources extends EventEmitter {
                 this.video[asset.name].src = asset.path;
                 this.video[asset.name].muted = true;
                 this.video[asset.name].playsInline = true;
-                this.video[asset.name].autoplay = true;
                 this.video[asset.name].loop = true;
-                // Preload only metadata to reduce initial loading time
-                this.video[asset.name].preload = "metadata";
+                // Set preload before autoplay for better compatibility
+                this.video[asset.name].preload = "auto";
+                this.video[asset.name].autoplay = true;
 
                 // Add error handling for video loading
                 this.video[asset.name].addEventListener("error", (e) => {
